@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bumper Festive Bonanza</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Festive Prosperity Color Tokens */
+      --surface: #2B021E;
+      --surface-dim: #2B021E;
+      --surface-bright: #592846;
+      --surface-container-lowest: #240018;
+      --surface-container-low: #360927;
+      --surface-container: #3B0E2B;
+      --surface-container-high: #471936;
+      --surface-container-highest: #542441;
+
+      --primary: #FFDCA1;
+      --on-primary: #412D00;
+      --primary-container: #FFB800;
+      --on-primary-container: #6B4C00;
+      --inverse-primary: #7C5800;
+
+      --gold: #FFB800;
+      --gold-dark: #E59800;
+      --gold-light: #FFD037;
+      --gold-fixed: #FFDEA8;
+      --surface-tint: #FFBA20;
+
+      --secondary: #FFB0C9;
+      --on-secondary: #650034;
+      --secondary-container: #8A0E4B;
+      --on-secondary-container: #FF95B9;
+
+      --tertiary: #FFD7DA;
+      --on-tertiary: #670020;
+      --tertiary-container: #FFAFB7;
+      --on-tertiary-container: #A40038;
+      --tertiary-neon: #FF3B69;
+
+      --error: #FFB4AB;
+      --on-error: #690005;
+      --error-container: #93000A;
+      --on-error-container: #FFDAD6;
+
+      --outline: #9E8F78;
+      --outline-variant: #514532;
+
+      --text-main: #FFF8E7; /* Text Primary (warm ivory) */
+      --text-muted: #F3C7DC; /* Text Muted (soft rose) */
+      --on-surface: #FFD8EA;
+      --on-surface-variant: #D5C4AB;
+
+      --success: #00D084; /* Success Tone */
+      --card-bg: #3B0E2B; /* Surface Container */
+
+      --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-headline: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--surface);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      background: radial-gradient(circle at 50% 0%, var(--surface-container) 0%, var(--surface) 60%, var(--surface-container-lowest) 100%);
+      padding-bottom: 140px; /* Space for sticky footer */
+    }
+
+    .app-container {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      min-height: 100vh;
+      background-color: transparent;
+      overflow-x: hidden;
+    }
+
+    /* --- Header --- */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background-color: var(--surface-container-lowest);
+      border-bottom: 1px solid var(--outline-variant);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--surface-container-low);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid var(--outline);
+      color: var(--text-main);
+    }
+
+    .header-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    /* --- Sections --- */
+    .section {
+      padding: 16px;
+    }
+
+    .image-placeholder {
+      background: var(--surface-container-lowest);
+      border: 1px dashed var(--outline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      border-radius: 12px;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .banner {
+      height: 180px;
+      margin: 16px;
+      background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-dark) 100%);
+      color: var(--surface);
+      font-weight: bold;
+      border: none;
+    }
+
+    .rewards-overlay {
+      position: relative;
+      height: 450px;
+      margin-bottom: 24px;
+    }
+
+    .bumber-reward-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bumber-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    
+    .bumber-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .view-all {
+      color: var(--gold);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .leads-chip {
+      background: var(--secondary-container);
+      color: var(--text-main);
+      border: 1.5px solid var(--gold);
+      padding: 6px 20px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: bold;
+      display: inline-block;
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 2;
+    }
+
+    /* Auto scroll rewards */
+    .rewards-scroll-container {
+      position: relative;
+      z-index: 2;
+      margin-top: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      scrollbar-width: none;
+      padding-bottom: 20px;
+    }
+    .rewards-scroll-container::-webkit-scrollbar { display: none; }
+
+    .rewards-track {
+      display: flex;
+      padding: 0 calc(50vw - 110px); /* Centers the 200px + 20px margins items */
+    }
+
+    .reward-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 10px;
+      width: 200px; 
+      height: 152px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease, box-shadow 0.35s ease;
+      transform: scale(0.85);
+      opacity: 0.55;
+      background: var(--card-bg);
+      border-top: 1px solid rgba(255, 184, 0, 0.4);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+      border-radius: 16px;
+      padding: 0;
+      position: relative;
+    }
+    .reward-item.active {
+      transform: scale(1.06);
+      opacity: 1;
+      z-index: 3;
+      border-top: 1px solid rgba(255, 184, 0, 0.8);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 16px rgba(255, 184, 0, 0.3);
+    }
+    
+    .reward-name {
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--text-main);
+      text-align: center;
+      margin: 8px 8px 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 16px);
+      line-height: 1.2;
+    }
+
+    .reward-image-container {
+      width: 100%;
+      height: 106px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--gold);
+      border-radius: 12px;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      background: var(--text-main);
+      box-sizing: border-box;
+    }
+
+    /* Podium Hero Auto Carousel Overlay on podium-bg.png */
+    .podium-stage-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .podium-bg-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .podium-goal-reward-name {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+      max-width: calc(100% - 32px);
+      padding: 5px 16px;
+      background: rgba(30, 2, 22, 0.85);
+      border: 1px solid rgba(255, 184, 0, 0.45);
+      border-radius: 9999px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 12px rgba(255, 184, 0, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      text-align: center;
+      font-family: var(--font-headline);
+      font-size: clamp(12px, 3.8vw, 15px);
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+      z-index: 5;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .podium-carousel-wrapper {
+      position: absolute;
+      top: 36px;
+      bottom: 26px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .podium-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .podium-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .podium-slide img {
+      max-width: 90%;
+      max-height: 90%;
+      transform: scale(2);
+      object-fit: contain;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 20px rgba(255, 184, 0, 0.45));
+      pointer-events: none;
+    }
+
+    .podium-slide img.scale-podium-75 {
+      transform: scale(1.5); /* 0.75 of current 2.0 scale */
+    }
+
+    .podium-indicators {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 5;
+    }
+
+    .podium-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .podium-indicator.active {
+      width: 18px;
+      border-radius: 9999px;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(255, 184, 0, 0.8);
+    }
+
+    /* Wave Text / Theme Text with Young Serif and Golden Color */
+    .wave-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 28px 0 22px;
+      font-family: 'Young Serif', serif;
+      color: var(--gold);
+      text-shadow: 0 2px 14px rgba(255, 184, 0, 0.45);
+      white-space: nowrap;
+      overflow: visible;
+    }
+
+    .wave-text span {
+      display: inline-block;
+      font-size: clamp(20px, 6.2vw, 32px);
+      animation: wave 2s ease-in-out infinite;
+    }
+
+    .wave-text span:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .wave-text span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .wave-text span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    .wave-text span:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes wave {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--surface-container);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--outline-variant);
+      border-top: 1px solid rgba(255, 184, 0, 0.35);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Timer */
+    .timer-card {
+      background-color: var(--surface-container);
+      border-radius: 20px;
+      padding: 20px 16px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 184, 0, 0.18);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+    }
+
+    .timer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .timer-title {
+      font-family: var(--font-headline);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .timer-title::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .badge-limited {
+      background-color: var(--on-tertiary);
+      color: var(--text-main);
+      border: 2px solid var(--tertiary-neon);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-headline);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer-boxes {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .time-box {
+      background-color: var(--surface-container-lowest);
+      border-radius: 16px;
+      padding: 14px 6px 12px 6px;
+      flex: 1;
+      text-align: center;
+      border: 1px solid var(--outline-variant);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .time-val {
+      font-family: var(--font-headline);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .time-lbl {
+      font-family: var(--font-family);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    /* Lead Goal Section */
+    .lead-goal-card {
+      background-color: var(--surface-container);
+      border-radius: 28px;
+      padding: 24px 16px 20px 16px;
+      border: 1px solid rgba(255, 184, 0, 0.18);
+      border-top: 1px solid rgba(255, 184, 0, 0.35);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .goal-arch-container {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 2px;
+      z-index: 1;
+    }
+
+    .goal-arch-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 4px 20px rgba(255, 184, 0, 0.25));
+    }
+
+    .goal-reward-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -46%);
+      max-width: 62%;
+      max-height: 68%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      z-index: 2;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 16px rgba(255, 184, 0, 0.35));
+      transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .goal-reward-img.scaled-15x {
+      transform: translate(-50%, -46%) scale(1.5);
+    }
+
+    .goal-reward-name {
+      text-align: center;
+      margin: 6px 12px 14px 12px;
+      font-family: var(--font-headline);
+      font-size: clamp(12px, 3.5vw, 15px);
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      z-index: 2;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .calculator-box {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      background-color: var(--surface-container-lowest);
+      border-radius: 20px;
+      padding: 20px 18px 18px 18px;
+      border: 1px solid rgba(255, 184, 0, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+
+    .goal-label {
+      font-family: var(--font-headline);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .goal-val {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold);
+      transition: transform 0.15s ease;
+      display: inline-block;
+    }
+
+    .goal-val.haptic-pop {
+      animation: textHapticPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes textHapticPop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.15); color: #ffffff; }
+      100% { transform: scale(1); color: var(--gold); }
+    }
+
+    .progress-bar-container {
+      position: relative;
+      width: 100%;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      cursor: pointer;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .progress-track {
+      position: absolute;
+      left: 10px;
+      right: 14px;
+      width: auto;
+      height: 8px;
+      background-color: var(--surface-container-high);
+      border-radius: 4px;
+    }
+
+    .progress-thumb {
+      width: 28px;
+      height: 28px;
+      background-color: var(--gold);
+      border: 4px solid var(--text-main);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 62.5%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 16px rgba(255, 184, 0, 0.95), 0 0 28px rgba(255, 184, 0, 0.6);
+      transition: left 0.15s ease-out, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+      pointer-events: none;
+    }
+
+    .progress-thumb.dragging {
+      transform: translate(-50%, -50%) scale(1.22);
+      box-shadow: 0 0 24px rgba(255, 184, 0, 1), 0 0 38px rgba(255, 184, 0, 0.85);
+    }
+
+    .progress-thumb.haptic-pop {
+      animation: thumbHapticPop 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes thumbHapticPop {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.35); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .progress-milestones {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2px;
+      user-select: none;
+    }
+
+    .progress-milestones span {
+      font-family: var(--font-headline);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      transition: color 0.2s, font-weight 0.2s, font-size 0.2s;
+    }
+
+    .progress-milestones span.active {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .progress-milestones span.target {
+      color: var(--gold-fixed);
+      font-weight: 800;
+    }
+
+    .goal-subtitle {
+      font-family: var(--font-family);
+      font-size: 15px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 18px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* List buttons */
+    .list-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background-color: var(--surface-container);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      border: 1px solid var(--outline-variant);
+      box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.3);
+    }
+
+    .list-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--surface-container-lowest);
+      border: 1px solid var(--outline-variant);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .list-content {
+      flex: 1;
+    }
+
+    .list-title {
+      font-family: var(--font-headline);
+      font-weight: bold;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .list-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .list-arrow {
+      color: var(--text-muted);
+    }
+
+    /* Sticky Footer & Floating Ticker */
+    .sticky-footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      z-index: 100;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    }
+
+    /* 1st fold state: Floating pill floater */
+    .sticky-footer:not(.has-scrolled) {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-top: none;
+      box-shadow: none;
+      padding: 0 16px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .sticky-footer:not(.has-scrolled) .ticker {
+      pointer-events: auto;
+      background: rgba(36, 0, 24, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 184, 0, 0.45);
+      border-radius: 9999px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 12px rgba(255, 184, 0, 0.15);
+      padding: 7px 18px;
+      margin: 0 auto;
+      width: auto;
+      max-width: calc(100% - 24px);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sticky-footer:not(.has-scrolled) .btn-primary {
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Scrolled state: Full sticky footer dock */
+    .sticky-footer.has-scrolled {
+      background-color: rgba(43, 2, 30, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255, 184, 0, 0.4);
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6);
+      padding: 12px 16px;
+      pointer-events: auto;
+    }
+
+    .sticky-footer.has-scrolled .ticker {
+      background-color: var(--surface-container-lowest);
+      border: none;
+      border-radius: 16px;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+      box-shadow: none;
+      width: 100%;
+    }
+
+    .sticky-footer.has-scrolled .btn-primary {
+      display: block;
+      opacity: 1;
+      animation: slideUpBtn 0.25s ease-out;
+      pointer-events: auto;
+    }
+
+    @keyframes slideUpBtn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ticker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    .live-badge {
+      background-color: var(--tertiary-neon);
+      color: var(--text-main);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .live-badge::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      background-color: var(--text-main);
+      border-radius: 50%;
+    }
+
+    .ticker-text {
+      flex: 1;
+      color: var(--text-main);
+      font-weight: 500;
+      animation: fadeTicker 0.5s ease;
+    }
+
+    @keyframes fadeTicker {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stats-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+    
+    .approved-leads {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .approved-icon {
+      color: var(--success);
+    }
+
+    .away-leads { color: var(--gold); }
+
+    .btn-primary {
+      width: 100%;
+      background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-dark) 100%);
+      color: var(--surface);
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(255, 184, 0, 0.4);
+    }
+
+    /* Bottom Sheet Dialog */
+    dialog {
+      padding: 0;
+      border: none;
+      background: transparent;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      margin-top: auto;
+      height: 80vh;
+      overflow: visible;
+    }
+
+    dialog::backdrop {
+      background: rgba(36, 0, 24, 0.8);
+      backdrop-filter: blur(2px);
+    }
+
+    /* For browsers that don't support flex dialog centering */
+    dialog[open] {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .sheet-content {
+      background-color: var(--surface-container-lowest);
+      border-radius: 20px 20px 0 0;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: slideUp 0.3s ease-out forwards;
+      border-top: 1px solid var(--gold);
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .handle {
+      width: 40px;
+      height: 4px;
+      background-color: var(--outline-variant);
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .sheet-title {
+      font-family: var(--font-headline);
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-main);
+    }
+
+    .close-btn {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      color: var(--text-main);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* Complete Festive Rewards Catalog Bottom Sheet */
+    #catalogSheet {
+      padding: 0;
+      border: none;
+      background: transparent;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      margin-top: auto;
+      height: 85vh;
+      overflow: visible;
+    }
+
+    #catalogSheet::backdrop {
+      background: rgba(18, 1, 14, 0.85);
+      backdrop-filter: blur(4px);
+    }
+
+    #catalogSheet[open] {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .catalog-sheet-content {
+      background: #190114;
+      border-radius: 24px 24px 0 0;
+      padding: 16px 20px 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: slideUp 0.3s ease-out forwards;
+      border-top: 1.5px solid rgba(255, 184, 0, 0.6);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+      color: var(--text-main);
+    }
+
+    .catalog-sheet-header {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 184, 0, 0.16);
+    }
+
+    .catalog-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .catalog-title {
+      font-family: var(--font-headline);
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .catalog-subtitle {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      line-height: 1.35;
+    }
+
+    .catalog-header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .milestones-pill {
+      font-family: var(--font-headline);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(59, 14, 43, 0.8);
+      border: 1px solid rgba(255, 184, 0, 0.6);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .catalog-close-btn {
+      background: rgba(43, 2, 30, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .catalog-close-btn:active {
+      transform: scale(0.92);
+    }
+
+    .catalog-sheet-body {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+    .catalog-sheet-body::-webkit-scrollbar {
+      width: 4px;
+    }
+    .catalog-sheet-body::-webkit-scrollbar-thumb {
+      background: rgba(255, 184, 0, 0.3);
+      border-radius: 2px;
+    }
+
+    .catalog-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .catalog-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 13px 4px;
+      border-bottom: 1px solid rgba(255, 184, 0, 0.14);
+      background: transparent;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      outline: none;
+      box-shadow: none;
+    }
+
+    .catalog-item:last-child {
+      border-bottom: none;
+    }
+
+    .catalog-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #200017;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 6px;
+      box-sizing: border-box;
+      border: 1px solid rgba(255, 184, 0, 0.18);
+    }
+
+    .catalog-thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .catalog-item-title {
+      flex: 1;
+      min-width: 0;
+      font-family: var(--font-headline);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .catalog-item-req {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .catalog-item-req .req-label {
+      font-family: var(--font-family);
+      font-size: 9px;
+      font-weight: 700;
+      color: #9d7d91;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .catalog-item-req .req-leads {
+      font-family: var(--font-headline);
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .tabs {
+      display: flex;
+      background-color: var(--surface);
+      border: 1px solid var(--outline-variant);
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .tab.active {
+      background-color: var(--gold);
+      color: var(--surface);
+    }
+
+    .tab-pane {
+      animation: fadeInTab 0.25s ease-out;
+    }
+
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sheet-body {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 20px;
+    }
+
+    .rule-item {
+      background-color: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .rule-icon {
+      font-size: 20px;
+    }
+
+    .rule-content h4 {
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    
+    .rule-content p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .sheet-footer {
+      padding-top: 16px;
+      text-align: center;
+    }
+
+    .support-link {
+      color: var(--gold);
+      font-size: 12px;
+      text-decoration: underline;
+      display: block;
+      margin-top: 12px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <button class="icon-btn">←</button>
+        <h1 class="header-title">Bumper Festive Bonanza</h1>
+      </div>
+      <button class="icon-btn" style="border: 1px solid var(--outline);" onclick="openSheet('faq')" aria-label="Frequently Asked Questions">?</button>
+    </header>
+
+    <!-- Banner -->
+    <img src="banner.jpg" alt="Bumper Festive Bonanza" style="width: calc(100% - 32px); height: auto; border-radius: 12px; margin: 16px; display: block;" />
+
+    <!-- Rewards Section with Podium Auto Carousel Overlay -->
+    <section class="rewards-section" style="margin-bottom: 24px;">
+      <div class="podium-stage-container">
+        <img src="podium-bg.png" class="podium-bg-img" alt="Podium Background" />
+        
+        <!-- goal-reward-name below Banner overlay on podium-bg.png -->
+        <div class="podium-goal-reward-name" id="podiumRewardName">Royal Enfield Bullet 350cc</div>
+
+        <!-- 3 image auto carousel overlay on podium-bg.png -->
+        <div class="podium-carousel-wrapper">
+          <div class="podium-slide active">
+            <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" class="scale-podium-75" />
+          </div>
+          <div class="podium-slide">
+            <img src="iphone-17.png" alt="iPhone 17" class="scale-podium-75" />
+          </div>
+          <div class="podium-slide">
+            <img src="svgs/laptop.svg" alt="High-Performance Laptop" />
+          </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="podium-indicators" id="podiumDots">
+          <span class="podium-indicator active"></span>
+          <span class="podium-indicator"></span>
+          <span class="podium-indicator"></span>
+        </div>
+      </div>
+
+      <div class="bumber-reward-header" style="margin-top: 16px;">
+        <div>
+          <h2 class="bumber-title">Bumper Reward</h2>
+          <p class="bumber-subtitle">Achieve intermediate leads & earn assured gifts</p>
+        </div>
+        <a href="javascript:void(0)" class="view-all" onclick="openCatalogSheet()">View all &gt;</a>
+      </div>
+
+      <div class="rewards-scroll-container">
+        <div class="rewards-track" id="track1">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Theme Text (Golden Color, Young Serif Font, Wave Animation) -->
+    <div class="wave-text" role="img" aria-label="Ye Season hai, Kamai Ka!">
+      <span>Ye</span>
+      <span>Season</span>
+      <span>hai,</span>
+      <span>Kamai Ka!</span>
+    </div>
+
+    <!-- Timer Section -->
+    <section class="section">
+      <div class="timer-card">
+        <div class="timer-header">
+          <div class="timer-title">Bonanza Closes In</div>
+          <div class="badge-limited">LIMITED TIME</div>
+        </div>
+        <div class="timer-boxes">
+          <div class="time-box">
+            <div class="time-val" id="t-days">00</div>
+            <div class="time-lbl">DAYS</div>
+          </div>
+          <div class="time-box">
+            <div class="time-val" id="t-hours">00</div>
+            <div class="time-lbl">HOURS</div>
+          </div>
+          <div class="time-box">
+            <div class="time-val" id="t-mins">00</div>
+            <div class="time-lbl">MINS</div>
+          </div>
+          <div class="time-box">
+            <div class="time-val" id="t-secs">00</div>
+            <div class="time-lbl">SECS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead Goal Section -->
+    <section class="section" style="padding-top:0;">
+      <div class="lead-goal-card">
+        <div class="goal-arch-container">
+          <img src="arch-bg.png" alt="Golden Arch" class="goal-arch-img" />
+          <img src="svgs/doubledoor-fridge.svg" alt="Goal Reward" id="goalRewardImg" class="goal-reward-img" />
+        </div>
+        
+        <div class="goal-reward-name" id="rewardNameText">Double-Door Refrigerator OR Fully Automatic Washing Machine</div>
+
+        <div class="calculator-box">
+          <div class="goal-header">
+            <span class="goal-label">Your Lead Goal:</span>
+            <span class="goal-val" id="goalValText">250 Leads</span>
+          </div>
+
+          <div class="progress-bar-container" id="progressBarContainer">
+            <div class="progress-track"></div>
+            <div class="progress-thumb" id="progressThumb"></div>
+          </div>
+
+          <div class="progress-milestones" id="milestonesRow">
+            <span data-leads="25">25</span>
+            <span data-leads="50">50</span>
+            <span data-leads="75">75</span>
+            <span data-leads="100">100</span>
+            <span data-leads="150">150</span>
+            <span data-leads="250" class="active">250</span>
+            <span data-leads="500">500</span>
+            <span data-leads="750">750</span>
+            <span data-leads="1000" class="target">1000</span>
+          </div>
+        </div>
+
+        <p class="goal-subtitle">
+          Slide to see rewards you can earn
+        </p>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="section" style="padding-top:0;">
+      <div class="list-btn" onclick="openSheet('terms')">
+        <div class="list-icon" style="color:var(--gold);">📜</div>
+        <div class="list-content">
+          <div class="list-title">Contest Rules & Guidelines</div>
+          <div class="list-subtitle">Review terms, payout cycle & eligibility criteria</div>
+        </div>
+        <div class="list-arrow">&gt;</div>
+      </div>
+
+      <div class="list-btn" onclick="openSheet('faq')">
+        <div class="list-icon" style="color:var(--gold);">❓</div>
+        <div class="list-content">
+          <div class="list-title">Frequently Asked Questions</div>
+          <div class="list-subtitle">How leads track, rewards & timelines</div>
+        </div>
+        <div class="list-arrow">&gt;</div>
+      </div>
+    </section>
+
+    <!-- Sticky Footer -->
+    <div class="sticky-footer" id="stickyFooter">
+      <div class="ticker">
+        <div class="live-badge">LIVE</div>
+        <div class="ticker-text" id="tickerText">Rahul Sharma added 14 leads today!</div>
+      </div>
+
+      <button class="btn-primary">ADD LEADS NOW 🚀</button>
+    </div>
+  </div>
+
+  <!-- Bottom Sheet -->
+  <dialog id="bottomSheet">
+    <div class="sheet-content">
+      <div class="handle"></div>
+      
+      <div class="sheet-header">
+        <div class="sheet-title" id="sheetTitle">📜 Campaign Guidelines & FAQs</div>
+        <button class="close-btn" onclick="closeSheet()">✕</button>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" id="tabTerms" onclick="switchTab('terms')">Terms & Conditions</div>
+        <div class="tab" id="tabFaq" onclick="switchTab('faq')">Frequently Asked</div>
+      </div>
+
+      <div class="sheet-body">
+        <!-- Terms & Conditions Pane -->
+        <div id="contentTerms" class="tab-pane">
+          <div class="rule-item">
+            <div class="rule-icon">📅</div>
+            <div class="rule-content">
+              <h4>Campaign Period</h4>
+              <p>The Bumper Festive Bonanza runs strictly from <strong>9th October 2026 (00:01 AM)</strong> to <strong>9th November 2026 (11:59 PM)</strong>.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">✅</div>
+            <div class="rule-content">
+              <h4>Lead Eligibility</h4>
+              <p>Only verified, disbursed, and issued leads (Credit Cards, Personal Loans, Demat accounts) qualify towards festive milestone targets.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">📦</div>
+            <div class="rule-content">
+              <h4>Reward Claiming & Dispatch</h4>
+              <p>Physical rewards and vehicles will be delivered to your registered and verified address within <strong>30-45 working days</strong> post campaign conclusion.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">🛡️</div>
+            <div class="rule-content">
+              <h4>Lead Verification & Disqualification</h4>
+              <p>Any fraudulent, duplicate, or subsequently cancelled leads will be strictly disqualified during the final audit without prior notice.</p>
+            </div>
+          </div>
+          
+          <div class="rule-item">
+            <div class="rule-icon">🚫</div>
+            <div class="rule-content">
+              <h4>Cash Alternative & Transfer</h4>
+              <p>All festive bonanza rewards are non-transferable, non-negotiable, and strictly cannot be exchanged for cash.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frequently Asked Questions Pane -->
+        <div id="contentFaq" class="tab-pane" style="display: none;">
+          <div class="rule-item">
+            <div class="rule-icon">🎯</div>
+            <div class="rule-content">
+              <h4>How are festive leads calculated?</h4>
+              <p>Every lead for Credit Cards, Personal Loans, or Demat accounts disbursed and approved between 9th Oct and 9th Nov automatically counts towards your milestone rewards.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">🎁</div>
+            <div class="rule-content">
+              <h4>When will I receive my assured reward?</h4>
+              <p>Eligible winners are notified via the app immediately after campaign closure. Rewards are dispatched within <strong>30-45 working days</strong> to your registered address.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">🏍️</div>
+            <div class="rule-content">
+              <h4>Can I win multiple milestone rewards?</h4>
+              <p>You will receive the highest milestone reward achieved at the conclusion of the campaign (e.g. achieve 1000 leads to win the Royal Enfield Bullet 350cc).</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">🔄</div>
+            <div class="rule-content">
+              <h4>What happens if a customer cancels or returns a lead?</h4>
+              <p>Only verified, fully active leads are counted. Disqualified or returned leads are automatically deducted during the final audit.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">⚡</div>
+            <div class="rule-content">
+              <h4>How do I track my progress?</h4>
+              <p>Your lead count updates in real-time on your dashboard. Use the interactive calculator slider to see how many leads you need for the next reward!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        <button class="btn-primary" onclick="closeSheet()">UNDERSTOOD / GOT IT</button>
+        <a href="#" class="support-link" onclick="switchTab('faq'); return false;">Need help? <strong>Contact Advisor Support</strong></a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Complete Festive Rewards Catalog Bottom Sheet -->
+  <dialog id="catalogSheet" aria-labelledby="catalogTitle">
+    <div class="catalog-sheet-content">
+      <div class="handle" style="margin-bottom: 14px;"></div>
+      
+      <div class="catalog-sheet-header">
+        <div class="catalog-header-top">
+          <div class="catalog-title" id="catalogTitle">🎁 Complete Festive Rewards Catalog</div>
+          <div class="catalog-header-right">
+            <span class="milestones-pill">8 Milestones</span>
+            <button class="catalog-close-btn" onclick="closeCatalogSheet()" aria-label="Close catalog">&times;</button>
+          </div>
+        </div>
+        <div class="catalog-subtitle">Win gifts on every verified milestone reached by 9 Nov</div>
+      </div>
+
+      <div class="catalog-sheet-body">
+        <div class="catalog-list">
+          <!-- Item 1 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350CC" />
+            </div>
+            <div class="catalog-item-title">Royal Enfield Bullet 350CC</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">1000 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="iphone-17.png" alt="Brand New iPhone 17" />
+            </div>
+            <div class="catalog-item-title">Brand New iPhone 17</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">700 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/laptop.svg" alt="High-Performance Laptop" />
+            </div>
+            <div class="catalog-item-title">High–Performance Laptop</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">500 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/doubledoor-fridge.svg" alt="Double Door Fridge / Auto Washer" />
+            </div>
+            <div class="catalog-item-title">Double Door Fridge / Auto Washer</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">250 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/air-fryer.svg" alt="Digital Smart Air Fryer" />
+            </div>
+            <div class="catalog-item-title">Digital Smart Air Fryer</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">150 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/breakfast-maker.svg" alt="Breakfast Maker / RO Purifier" />
+            </div>
+            <div class="catalog-item-title">Breakfast Maker / RO Purifier</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">100 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/coffe-maker.svg" alt="Coffee Machine / Steam Iron" />
+            </div>
+            <div class="catalog-item-title">Coffee Machine / Steam Iron</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">50 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/Specil-gift.svg" alt="Certificate + Gift Box" />
+            </div>
+            <div class="catalog-item-title">Certificate + Gift Box</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">20 Leads</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // --- Timer Logic ---
+    const targetDate = new Date('2026-11-09T00:00:00').getTime();
+    
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("t-days").innerText = "00";
+        document.getElementById("t-hours").innerText = "00";
+        document.getElementById("t-mins").innerText = "00";
+        document.getElementById("t-secs").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("t-days").innerText = days.toString().padStart(2, '0');
+      document.getElementById("t-hours").innerText = hours.toString().padStart(2, '0');
+      document.getElementById("t-mins").innerText = minutes.toString().padStart(2, '0');
+      document.getElementById("t-secs").innerText = seconds.toString().padStart(2, '0');
+    }
+    
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // --- Bottom Sheet Logic ---
+    const dialog = document.getElementById('bottomSheet');
+    
+    function switchTab(tab) {
+      const tabTerms = document.getElementById('tabTerms');
+      const tabFaq = document.getElementById('tabFaq');
+      const contentTerms = document.getElementById('contentTerms');
+      const contentFaq = document.getElementById('contentFaq');
+      const sheetTitle = document.getElementById('sheetTitle');
+
+      if (tab === 'faq') {
+        if (tabFaq) tabFaq.classList.add('active');
+        if (tabTerms) tabTerms.classList.remove('active');
+        if (contentFaq) contentFaq.style.display = 'block';
+        if (contentTerms) contentTerms.style.display = 'none';
+        if (sheetTitle) sheetTitle.innerHTML = '❓ Frequently Asked Questions';
+      } else {
+        if (tabTerms) tabTerms.classList.add('active');
+        if (tabFaq) tabFaq.classList.remove('active');
+        if (contentTerms) contentTerms.style.display = 'block';
+        if (contentFaq) contentFaq.style.display = 'none';
+        if (sheetTitle) sheetTitle.innerHTML = '📜 Campaign Guidelines';
+      }
+    }
+
+    function openSheet(tab = 'terms') {
+      switchTab(tab);
+      if (dialog) dialog.showModal();
+    }
+    
+    function closeSheet() {
+      if (dialog) dialog.close();
+    }
+    
+    // Close on click outside
+    if (dialog) {
+      dialog.addEventListener('click', (e) => {
+        const dialogDimensions = dialog.getBoundingClientRect();
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          dialog.close();
+        }
+      });
+    }
+
+    // --- Complete Festive Rewards Catalog Dialog Logic ---
+    const catalogDialog = document.getElementById('catalogSheet');
+    function openCatalogSheet() {
+      if (catalogDialog) catalogDialog.showModal();
+    }
+    function closeCatalogSheet() {
+      if (catalogDialog) catalogDialog.close();
+    }
+    if (catalogDialog) {
+      catalogDialog.addEventListener('click', (e) => {
+        const rect = catalogDialog.getBoundingClientRect();
+        if (
+          e.clientX < rect.left ||
+          e.clientX > rect.right ||
+          e.clientY < rect.top ||
+          e.clientY > rect.bottom
+        ) {
+          catalogDialog.close();
+        }
+      });
+    }
+
+    // --- Scroll-Adaptive Sticky Footer (Floating Pill on 1st Fold, Full Dock after Scroll) ---
+    const stickyFooter = document.getElementById('stickyFooter');
+    function updateFooterOnScroll() {
+      if (!stickyFooter) return;
+      if (window.scrollY > 60) {
+        stickyFooter.classList.add('has-scrolled');
+      } else {
+        stickyFooter.classList.remove('has-scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateFooterOnScroll, { passive: true });
+    updateFooterOnScroll();
+
+    // --- Dynamic Ticker with 50 Names & Weighted Random Logic ---
+    const names50 = [
+      "Rahul Sharma", "Priya Patel", "Amit Kumar", "Neha Singh", "Vikram Reddy",
+      "Ananya Joshi", "Suresh Nair", "Pooja Verma", "Rohan Gupta", "Deepak Verma",
+      "Sunita Rao", "Manoj Tiwari", "Kavita Sen", "Rajesh Khanna", "Sneha Kulkarni",
+      "Vikas Yadav", "Swati Mishra", "Arjun Mehra", "Divya Agarwal", "Karan Malhotra",
+      "Preeti Choudhary", "Gaurav Bansal", "Ritu Deshmukh", "Alok Pandey", "Meera Pillai",
+      "Nitin Saxena", "Shweta Bhatia", "Harish Rawat", "Ankit Jain", "Bhavna Shah",
+      "Sanjay Goyal", "Pooja Hegde", "Tarun Das", "Shilpa Shetty", "Ashish Roy",
+      "Komal Singhania", "Vivek Anand", "Anita Mathur", "Pradeep Chauhan", "Sonia Batra",
+      "Hemant Soni", "Jyoti Sharma", "Rameshwar Prasad", "Pallavi Roy", "Dinesh Solanki",
+      "Monika Kashyap", "Varun Kapoor", "Sheetal Dubey", "Mohit Aggarwal", "Kiran Bedi"
+    ];
+
+    function getRandomLeadCount() {
+      // 2 to 100 leads with lower probability for > 50 leads (85% chance: 2-50, 15% chance: 51-100)
+      if (Math.random() < 0.85) {
+        return Math.floor(Math.random() * (50 - 2 + 1)) + 2;
+      } else {
+        return Math.floor(Math.random() * (100 - 51 + 1)) + 51;
+      }
+    }
+
+    function updateTicker() {
+      const tickerEl = document.getElementById('tickerText');
+      if (!tickerEl) return;
+      const randomName = names50[Math.floor(Math.random() * names50.length)];
+      const randomCount = getRandomLeadCount();
+      
+      const newEl = tickerEl.cloneNode(true);
+      newEl.textContent = `${randomName} added ${randomCount} leads today!`;
+      tickerEl.parentNode.replaceChild(newEl, tickerEl);
+    }
+    
+    setInterval(updateTicker, 3500);
+
+    // --- 3-Image Podium Auto Carousel with 3 Names Overlay on podium-bg.png ---
+    const podiumPrizes = [
+      { name: "Royal Enfield Bullet 350cc", img: "svgs/bullet-350.svg" },
+      { name: "iPhone 17", img: "iphone-17.png" },
+      { name: "High-Performance Laptop", img: "svgs/laptop.svg" }
+    ];
+
+    let currentPodiumIdx = 0;
+    const podiumNameEl = document.getElementById('podiumRewardName');
+    const podiumSlides = document.querySelectorAll('.podium-slide');
+    const podiumDots = document.querySelectorAll('#podiumDots .podium-indicator');
+
+    function showPodiumSlide(idx) {
+      currentPodiumIdx = idx;
+      if (podiumNameEl) {
+        podiumNameEl.style.opacity = '0';
+        podiumNameEl.style.transform = 'translateX(-50%) translateY(-4px)';
+        setTimeout(() => {
+          podiumNameEl.textContent = podiumPrizes[idx].name;
+          podiumNameEl.style.opacity = '1';
+          podiumNameEl.style.transform = 'translateX(-50%) translateY(0)';
+        }, 150);
+      }
+      podiumSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+      });
+      podiumDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+      });
+    }
+
+    setInterval(() => {
+      const nextIdx = (currentPodiumIdx + 1) % podiumPrizes.length;
+      showPodiumSlide(nextIdx);
+    }, 3000);
+
+    // --- Rewards Auto Scroll Setup (Intermediate milestones only; top 3 bumper prizes excluded) ---
+    const rewards = [
+      { name: "Certificate + Gift Box", img: "svgs/Specil-gift.svg", leads: "20" },
+      { name: "Coffee Machine / Steam Iron", img: "svgs/coffe-maker.svg", leads: "50" },
+      { name: "Breakfast Maker / RO Purifier", img: "svgs/breakfast-maker.svg", leads: "100" },
+      { name: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg", leads: "150" },
+      { name: "Double Door Fridge / Auto Washer", img: "svgs/doubledoor-fridge.svg", leads: "250" }
+    ];
+    
+    const trackHTML = rewards.map(r => `
+      <div class="reward-item">
+        <div class="reward-name" title="${r.name}">${r.name}</div>
+        <div class="reward-image-container">
+          <img src="${r.img}" style="width: 80px; height: 80px; object-fit: contain; z-index: 1; position: relative;" />
+          <div class="leads-chip" style="font-size: 11px; padding: 3px 12px; bottom: -10px;">${r.leads} Leads</div>
+        </div>
+      </div>
+    `).join('');
+    
+    const trackEl = document.getElementById('track1');
+    trackEl.innerHTML = trackHTML.repeat(40); // Duplicate to simulate seamless infinite loop
+
+    const scroller = document.querySelector('.rewards-scroll-container');
+    const items = trackEl.querySelectorAll('.reward-item');
+
+    // Zoom ONLY when item is centered in the container
+    function updateActiveRewardItem() {
+      if (!scroller || !items.length) return;
+      const scrollerRect = scroller.getBoundingClientRect();
+      const scrollerCenterX = scrollerRect.left + scrollerRect.width / 2;
+
+      let closestItem = null;
+      let minDistance = Infinity;
+
+      items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.right < scrollerRect.left - 200 || itemRect.left > scrollerRect.right + 200) {
+          item.classList.remove('active');
+          return;
+        }
+        const itemCenterX = itemRect.left + itemRect.width / 2;
+        const distance = Math.abs(scrollerCenterX - itemCenterX);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      items.forEach(item => {
+        if (item === closestItem && minDistance < 60) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    scroller.addEventListener('scroll', () => {
+      requestAnimationFrame(updateActiveRewardItem);
+    }, { passive: true });
+
+    let currentIndex = rewards.length * 20; // Start in middle of duplicates
+    
+    function scrollCarouselTo(index, smooth = true) {
+      const item = items[index];
+      if (!item || !scroller) return;
+      // Center item in container horizontally only
+      const targetLeft = item.offsetLeft - (scroller.clientWidth - item.clientWidth) / 2;
+      scroller.scrollTo({
+        left: targetLeft,
+        behavior: smooth ? 'smooth' : 'auto'
+      });
+      setTimeout(updateActiveRewardItem, smooth ? 320 : 50);
+    }
+
+    // Initial position inside scroller without scrolling window
+    setTimeout(() => {
+      scrollCarouselTo(currentIndex, false);
+      updateActiveRewardItem();
+    }, 100);
+
+    let isUserInteracting = false;
+    scroller.addEventListener('touchstart', () => { isUserInteracting = true; }, { passive: true });
+    scroller.addEventListener('touchend', () => { setTimeout(() => { isUserInteracting = false; }, 2000); }, { passive: true });
+    scroller.addEventListener('mouseenter', () => { isUserInteracting = true; });
+    scroller.addEventListener('mouseleave', () => { isUserInteracting = false; });
+
+    setInterval(() => {
+      if (isUserInteracting) return;
+      currentIndex = (currentIndex + 1) % items.length;
+      scrollCarouselTo(currentIndex, true);
+    }, 3000);
+
+    // --- Interactive Lead Goal Slider Logic ---
+    const goalMilestonesData = [
+      { leads: 25, reward: "Special Gift from BankSathi", img: "svgs/Specil-gift.svg" },
+      { leads: 50, reward: "Coffee Machine OR Branded Iron", img: "svgs/coffe-maker.svg" },
+      { leads: 75, reward: "AI Breakfast Maker OR AI Water Purifier", img: "svgs/breakfast-maker.svg" },
+      { leads: 100, reward: "Air Fryer", img: "svgs/air-fryer.svg" },
+      { leads: 150, reward: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg" },
+      { leads: 250, reward: "Double-Door Refrigerator OR Fully Automatic Washing Machine", img: "svgs/doubledoor-fridge.svg" },
+      { leads: 500, reward: "High-Performance Laptop", img: "svgs/laptop.svg" },
+      { leads: 750, reward: "Brand New iPhone 17", img: "iphone-17.png" },
+      { leads: 1000, reward: "Royal Enfield Bullet 350cc", img: "svgs/bullet-350.svg" }
+    ];
+
+    const progressBar = document.getElementById('progressBarContainer');
+    const progressThumb = document.getElementById('progressThumb');
+    const goalValText = document.getElementById('goalValText');
+    const rewardNameText = document.getElementById('rewardNameText');
+    const goalRewardImg = document.getElementById('goalRewardImg');
+    const milestoneSpans = document.querySelectorAll('#milestonesRow span');
+
+    // Align progress-track to exact start & end milestones
+    function alignProgressTrack() {
+      const milestones = document.querySelectorAll('#milestonesRow span');
+      const container = document.getElementById('progressBarContainer');
+      const track = document.querySelector('.progress-track');
+      if (milestones.length && container && track) {
+        const cRect = container.getBoundingClientRect();
+        const firstRect = milestones[0].getBoundingClientRect();
+        const lastRect = milestones[milestones.length - 1].getBoundingClientRect();
+        const leftOffset = (firstRect.left + firstRect.width / 2) - cRect.left;
+        const rightOffset = cRect.right - (lastRect.left + lastRect.width / 2);
+        track.style.left = `${Math.round(leftOffset)}px`;
+        track.style.right = `${Math.round(rightOffset)}px`;
+        track.style.width = 'auto';
+      }
+    }
+
+    // --- Haptic Feedback System for Calculator Box ---
+    let hapticAudioCtx = null;
+    function playHapticTick(isTarget = false) {
+      try {
+        if (!hapticAudioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) hapticAudioCtx = new AudioContextClass();
+        }
+        if (hapticAudioCtx && hapticAudioCtx.state === 'suspended') {
+          hapticAudioCtx.resume();
+        }
+        if (hapticAudioCtx) {
+          const osc = hapticAudioCtx.createOscillator();
+          const gain = hapticAudioCtx.createGain();
+          osc.type = 'sine';
+          const now = hapticAudioCtx.currentTime;
+          if (isTarget) {
+            osc.frequency.setValueAtTime(190, now);
+            osc.frequency.exponentialRampToValueAtTime(50, now + 0.04);
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+            osc.connect(gain);
+            gain.connect(hapticAudioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 0.04);
+          } else {
+            osc.frequency.setValueAtTime(140, now);
+            osc.frequency.exponentialRampToValueAtTime(40, now + 0.022);
+            gain.gain.setValueAtTime(0.06, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.022);
+            osc.connect(gain);
+            gain.connect(hapticAudioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 0.022);
+          }
+        }
+      } catch (e) {}
+    }
+
+    function triggerHaptics(isTarget = false) {
+      if (typeof window !== 'undefined' && window.navigator && typeof window.navigator.vibrate === 'function') {
+        try {
+          if (isTarget) {
+            window.navigator.vibrate([60, 50, 80]); // Distinct celebratory double vibration for 1000 Leads
+          } else {
+            window.navigator.vibrate(50); // Strong 50ms vibration pulse (felt on all phone motors)
+          }
+        } catch (e) {}
+      }
+      playHapticTick(isTarget);
+    }
+
+    let currentGoalIdx = -1;
+
+    function setGoalIndex(idx, userInitiated = false) {
+      if (idx < 0 || idx >= goalMilestonesData.length) return;
+      const isNewIndex = currentGoalIdx !== idx;
+      currentGoalIdx = idx;
+      const item = goalMilestonesData[idx];
+      const targetSpan = milestoneSpans[idx];
+      if (targetSpan && progressBar && progressThumb) {
+        const cRect = progressBar.getBoundingClientRect();
+        const sRect = targetSpan.getBoundingClientRect();
+        const thumbLeft = (sRect.left + sRect.width / 2) - cRect.left;
+        progressThumb.style.left = `${thumbLeft}px`;
+      }
+      if (goalValText) goalValText.innerText = `${item.leads} Leads`;
+      if (rewardNameText) {
+        rewardNameText.innerText = item.reward;
+        rewardNameText.title = item.reward;
+      }
+
+      // Haptic feedback on user interaction
+      if (userInitiated && isNewIndex) {
+        triggerHaptics(item.leads === 1000);
+        if (progressThumb) {
+          progressThumb.classList.remove('haptic-pop');
+          void progressThumb.offsetWidth;
+          progressThumb.classList.add('haptic-pop');
+        }
+        if (goalValText) {
+          goalValText.classList.remove('haptic-pop');
+          void goalValText.offsetWidth;
+          goalValText.classList.add('haptic-pop');
+        }
+      }
+
+      // Sync reward photo with goal milestone and overlay on arch-bg.png (scale all to 1.5x except doubledoor-fridge)
+      if (goalRewardImg && item.img) {
+        const isFridge = item.img.includes('doubledoor-fridge');
+        const targetScale = isFridge ? 1.0 : 1.5;
+        goalRewardImg.style.opacity = '0';
+        goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale * 0.85})`;
+        setTimeout(() => {
+          goalRewardImg.src = item.img;
+          goalRewardImg.alt = item.reward;
+          goalRewardImg.style.opacity = '1';
+          goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale})`;
+          if (isFridge) {
+            goalRewardImg.classList.remove('scaled-15x');
+          } else {
+            goalRewardImg.classList.add('scaled-15x');
+          }
+        }, 120);
+      }
+
+      milestoneSpans.forEach((span, i) => {
+        if (i === idx) {
+          span.classList.add('active');
+        } else {
+          span.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      alignProgressTrack();
+      const activeIdx = Array.from(milestoneSpans).findIndex(s => s.classList.contains('active'));
+      setGoalIndex(activeIdx >= 0 ? activeIdx : 5, false);
+    });
+
+    setTimeout(() => {
+      alignProgressTrack();
+      setGoalIndex(5, false);
+    }, 50);
+
+    milestoneSpans.forEach((span, i) => {
+      span.addEventListener('pointerdown', () => setGoalIndex(i, true));
+      span.addEventListener('click', () => setGoalIndex(i, true));
+    });
+
+    if (progressBar) {
+      function handleProgressMove(clientX, userInitiated = true) {
+        const rect = progressBar.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        const closestIdx = Math.round(ratio * (goalMilestonesData.length - 1));
+        setGoalIndex(closestIdx, userInitiated);
+      }
+
+      let isDragging = false;
+
+      progressBar.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        if (progressThumb) progressThumb.classList.add('dragging');
+        handleProgressMove(e.clientX, true);
+        if (typeof progressBar.setPointerCapture === 'function') {
+          try { progressBar.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+      });
+
+      progressBar.addEventListener('pointermove', (e) => {
+        if (isDragging) handleProgressMove(e.clientX, true);
+      });
+
+      progressBar.addEventListener('pointerup', (e) => {
+        if (isDragging) {
+          isDragging = false;
+          if (progressThumb) progressThumb.classList.remove('dragging');
+          if (typeof progressBar.releasePointerCapture === 'function') {
+            try { progressBar.releasePointerCapture(e.pointerId); } catch (_) {}
+          }
+        }
+      });
+
+      progressBar.addEventListener('pointercancel', (e) => {
+        if (isDragging) {
+          isDragging = false;
+          if (progressThumb) progressThumb.classList.remove('dragging');
+        }
+      });
+
+      progressBar.addEventListener('click', (e) => handleProgressMove(e.clientX, true));
+    }
+
+  </script>
+</body>
+</html>
