@@ -1057,9 +1057,34 @@
     }
 
     .catalog-sheet-header {
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 184, 0, 0.16);
+      margin-bottom: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .catalog-col-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 4px 8px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 184, 0, 0.22);
+      font-family: var(--font-headline);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .catalog-col-rewards {
+      color: rgba(255, 255, 255, 0.65);
+      text-align: left;
+    }
+
+    .catalog-col-leads {
+      color: var(--gold);
+      text-align: right;
     }
 
     .catalog-header-top {
@@ -1197,19 +1222,10 @@
 
     .catalog-item-req {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
+      justify-content: flex-end;
       flex-shrink: 0;
       text-align: right;
-    }
-
-    .catalog-item-req .req-label {
-      font-family: var(--font-family);
-      font-size: 9px;
-      font-weight: 700;
-      color: #9d7d91;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
     }
 
     .catalog-item-req .req-leads {
@@ -1696,6 +1712,12 @@
         <div class="catalog-subtitle">Win assured gifts on every verified milestone reached by 9 Nov</div>
       </div>
 
+      <!-- Static Table Header -->
+      <div class="catalog-col-header">
+        <span class="catalog-col-rewards">Rewards</span>
+        <span class="catalog-col-leads">Required Approved Leads</span>
+      </div>
+
       <div class="catalog-sheet-body">
         <div class="catalog-list">
           <!-- Milestone 1: 1000 Leads -->
@@ -1705,7 +1727,6 @@
             </div>
             <div class="catalog-item-title">Royal Enfield Bullet 350cc</div>
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">1000 Leads</span>
             </div>
           </div>
@@ -1717,7 +1738,6 @@
             </div>
             <div class="catalog-item-title">iPhone 17</div>
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">750 Leads</span>
             </div>
           </div>
@@ -1729,7 +1749,6 @@
             </div>
             <div class="catalog-item-title">Laptop</div>
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">500 Leads</span>
             </div>
           </div>
@@ -1760,7 +1779,6 @@
             </div>
 
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">250 Leads</span>
             </div>
           </div>
@@ -1772,7 +1790,6 @@
             </div>
             <div class="catalog-item-title">40-inch Smart TV</div>
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">150 Leads</span>
             </div>
           </div>
@@ -1784,7 +1801,6 @@
             </div>
             <div class="catalog-item-title">Air Fryer</div>
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">100 Leads</span>
             </div>
           </div>
@@ -1815,7 +1831,6 @@
             </div>
 
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">75 Leads</span>
             </div>
           </div>
@@ -1846,7 +1861,6 @@
             </div>
 
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">50 Leads</span>
             </div>
           </div>
@@ -1858,7 +1872,6 @@
             </div>
             <div class="catalog-item-title">Special Gift from BankSathi</div>
             <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">25 Leads</span>
             </div>
           </div>
