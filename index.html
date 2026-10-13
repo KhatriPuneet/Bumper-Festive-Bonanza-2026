@@ -763,7 +763,7 @@
       -webkit-backdrop-filter: none;
       border-top: none;
       box-shadow: none;
-      padding: 0 16px 20px;
+      padding: 0 16px 14px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -772,11 +772,11 @@
 
     .sticky-footer:not(.has-scrolled) .ticker {
       pointer-events: auto;
-      background: var(--gold);
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: #FFFDF9;
+      border: 1.5px solid var(--gold);
       border-radius: 9999px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 184, 0, 0.35);
-      padding: 7px 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 10px rgba(255, 184, 0, 0.25);
+      padding: 3.5px 12px;
       margin: 0 auto;
       width: auto;
       max-width: calc(100% - 24px);
@@ -786,14 +786,17 @@
     }
 
     .sticky-footer:not(.has-scrolled) .ticker .ticker-text {
-      color: #200017;
+      color: #000000;
       font-weight: 700;
+      line-height: 1.2;
     }
 
     .sticky-footer:not(.has-scrolled) .ticker .live-badge {
       background-color: #D80032;
       color: #FFFFFF;
+      padding: 1.5px 5px;
       font-weight: 800;
+      line-height: 1;
     }
 
     .sticky-footer:not(.has-scrolled) .ticker .live-badge::before {
