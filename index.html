@@ -244,6 +244,119 @@
       box-sizing: border-box;
     }
 
+    /* Dual Milestone in Rewards Track */
+    .reward-item-dual {
+      cursor: pointer;
+    }
+
+    .reward-title-slider {
+      position: relative;
+      width: calc(100% - 16px);
+      height: 22px;
+      margin: 8px 8px 4px;
+      overflow: hidden;
+    }
+
+    .reward-title-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .reward-title-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .reward-title-slide.rise-up-exit {
+      opacity: 0;
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    .reward-title-slide .reward-name {
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .reward-thumb-slider {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .reward-thumb-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .reward-thumb-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .reward-thumb-slide.rise-up-exit {
+      opacity: 0;
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    .reward-dual-badge {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(43, 2, 30, 0.85);
+      border: 1px solid rgba(255, 184, 0, 0.5);
+      border-radius: 9999px;
+      padding: 1px 5px;
+      letter-spacing: 0.02em;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .track-or-tag {
+      background: rgba(255, 184, 0, 0.25);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 8.5px;
+      font-weight: 800;
+      padding: 1px 3.5px;
+      border-radius: 4px;
+      margin-right: 3px;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
     /* Podium Hero Auto Carousel Overlay on podium-bg.png */
     .podium-stage-container {
       position: relative;
@@ -1612,7 +1725,7 @@
             <div class="rule-icon">📦</div>
             <div class="rule-content">
               <h4>Reward Claiming & Dispatch</h4>
-              <p>Physical gifts and vehicles will be delivered to your provided address within 30 working days after you submit your details through the reward claim form. <a href="https://forms.gle/U6svFB7n4gZSgZzd8" target="_blank" rel="noopener noreferrer">Submit Your Details ↗</a></p>
+              <p>Physical rewards will be delivered to your provided address within 30 working days after you submit your details through the reward claim form. <a href="https://forms.gle/U6svFB7n4gZSgZzd8" target="_blank" rel="noopener noreferrer">Submit Your Details ↗</a></p>
             </div>
           </div>
 
@@ -1694,8 +1807,8 @@
       </div>
 
       <div class="sheet-footer">
-        <button class="btn-primary" onclick="closeSheet()">UNDERSTOOD / GOT IT</button>
-        <a href="#" class="support-link" onclick="switchTab('faq'); return false;">Need help? <strong>Contact Advisor Support</strong></a>
+        <button class="btn-primary" onclick="closeSheet()">Got it</button>
+        <a href="tel:+918058100306" class="support-link">Need help? <strong>Call us</strong></a>
       </div>
     </div>
   </dialog>
@@ -2176,29 +2289,128 @@
 
     // --- Rewards Auto Scroll Setup (Intermediate milestones only; top 3 bumper prizes excluded) ---
     const rewards = [
-      { name: "Special Gift from BankSathi", img: "svgs/Specil-gift.svg", leads: "25" },
-      { name: "Coffee Machine", img: "svgs/coffe-maker.svg", leads: "50" },
-      { name: "Branded Iron", img: "svgs/iron.svg", leads: "50" },
-      { name: "AI Breakfast Maker", img: "svgs/breakfast-maker.svg", leads: "75" },
-      { name: "AI Water Purifier", img: "svgs/water-purifier.svg", leads: "75" },
-      { name: "Air Fryer", img: "svgs/air-fryer.svg", leads: "100" },
-      { name: "40-inch Smart TV", img: "svgs/smart-tv.png", leads: "150" },
-      { name: "Double-Door Refrigerator", img: "svgs/doubledoor-fridge.svg", leads: "250" },
-      { name: "Fully Automatic Washing Machine", img: "svgs/washing machine.svg", leads: "250" }
+      {
+        leads: "25",
+        name: "Special Gift from BankSathi",
+        img: "svgs/Specil-gift.svg",
+        isDual: false
+      },
+      {
+        leads: "50",
+        isDual: true,
+        options: [
+          { name: "Coffee Machine", img: "svgs/coffe-maker.svg" },
+          { name: "Branded Iron", img: "svgs/iron.svg" }
+        ]
+      },
+      {
+        leads: "75",
+        isDual: true,
+        options: [
+          { name: "AI Breakfast Maker", img: "svgs/breakfast-maker.svg" },
+          { name: "AI Water Purifier", img: "svgs/water-purifier.svg" }
+        ]
+      },
+      {
+        leads: "100",
+        name: "Air Fryer",
+        img: "svgs/air-fryer.svg",
+        isDual: false
+      },
+      {
+        leads: "150",
+        name: "40-inch Smart TV",
+        img: "svgs/smart-tv.png",
+        isDual: false
+      },
+      {
+        leads: "250",
+        isDual: true,
+        options: [
+          { name: "Double-Door Refrigerator", img: "svgs/doubledoor-fridge.svg" },
+          { name: "Fully Automatic Washing Machine", img: "svgs/washing machine.svg" }
+        ]
+      }
     ];
-    
-    const trackHTML = rewards.map(r => `
-      <div class="reward-item">
-        <div class="reward-name" title="${r.name}">${r.name}</div>
-        <div class="reward-image-container">
-          <img src="${r.img}" loading="lazy" decoding="async" style="width: 80px; height: 80px; object-fit: contain; z-index: 1; position: relative;" alt="${r.name}" />
-          <div class="leads-chip" style="font-size: 11px; padding: 3px 12px; bottom: -10px;">${r.leads} Leads</div>
-        </div>
-      </div>
-    `).join('');
-    
+
+    const trackHTML = rewards.map(r => {
+      if (r.isDual) {
+        return `
+          <div class="reward-item reward-item-dual" onclick="toggleTrackDual(this)" title="Tap to toggle reward option">
+            <div class="reward-dual-badge">2 Choices</div>
+            <div class="reward-title-slider">
+              <div class="reward-title-slide active">
+                <div class="reward-name" title="${r.options[0].name}">${r.options[0].name}</div>
+              </div>
+              <div class="reward-title-slide">
+                <div class="reward-name" title="${r.options[1].name}"><span class="track-or-tag">OR</span> ${r.options[1].name}</div>
+              </div>
+            </div>
+            <div class="reward-image-container reward-thumb-dual">
+              <div class="reward-thumb-slider">
+                <div class="reward-thumb-slide active">
+                  <img src="${r.options[0].img}" loading="lazy" decoding="async" style="width: 80px; height: 80px; object-fit: contain; z-index: 1;" alt="${r.options[0].name}" />
+                </div>
+                <div class="reward-thumb-slide">
+                  <img src="${r.options[1].img}" loading="lazy" decoding="async" style="width: 80px; height: 80px; object-fit: contain; z-index: 1;" alt="${r.options[1].name}" />
+                </div>
+              </div>
+              <div class="leads-chip" style="font-size: 11px; padding: 3px 12px; bottom: -10px;">${r.leads} Leads</div>
+            </div>
+          </div>
+        `;
+      } else {
+        return `
+          <div class="reward-item">
+            <div class="reward-name" title="${r.name}">${r.name}</div>
+            <div class="reward-image-container">
+              <img src="${r.img}" loading="lazy" decoding="async" style="width: 80px; height: 80px; object-fit: contain; z-index: 1; position: relative;" alt="${r.name}" />
+              <div class="leads-chip" style="font-size: 11px; padding: 3px 12px; bottom: -10px;">${r.leads} Leads</div>
+            </div>
+          </div>
+        `;
+      }
+    }).join('');
+
     const trackEl = document.getElementById('track1');
-    trackEl.innerHTML = trackHTML.repeat(10); // 10 cycles (90 items) is lightweight & plenty for infinite scroll
+    trackEl.innerHTML = trackHTML.repeat(12); // 12 cycles (72 items) for seamless infinite scroll
+
+    function animateTrackDualItem(itemEl) {
+      if (!itemEl) return;
+      const thumbSlides = itemEl.querySelectorAll('.reward-thumb-slide');
+      const titleSlides = itemEl.querySelectorAll('.reward-title-slide');
+      if (thumbSlides.length < 2 || titleSlides.length < 2) return;
+
+      const currentIdx = Array.from(thumbSlides).findIndex(s => s.classList.contains('active'));
+      const nextIdx = (currentIdx + 1) % thumbSlides.length;
+
+      thumbSlides[currentIdx].classList.remove('active');
+      thumbSlides[currentIdx].classList.add('rise-up-exit');
+
+      titleSlides[currentIdx].classList.remove('active');
+      titleSlides[currentIdx].classList.add('rise-up-exit');
+
+      thumbSlides[nextIdx].classList.remove('rise-up-exit');
+      thumbSlides[nextIdx].classList.add('active');
+
+      titleSlides[nextIdx].classList.remove('rise-up-exit');
+      titleSlides[nextIdx].classList.add('active');
+
+      setTimeout(() => {
+        thumbSlides[currentIdx].classList.remove('rise-up-exit');
+        titleSlides[currentIdx].classList.remove('rise-up-exit');
+      }, 450);
+    }
+
+    function toggleTrackDual(itemEl) {
+      animateTrackDualItem(itemEl);
+      if (typeof playHapticTick === 'function') playHapticTick(false);
+    }
+
+    let trackDualInterval = setInterval(() => {
+      const dualItems = trackEl.querySelectorAll('.reward-item-dual');
+      dualItems.forEach(item => animateTrackDualItem(item));
+    }, 2800);
 
     const scroller = document.querySelector('.rewards-scroll-container');
     const items = trackEl.querySelectorAll('.reward-item');
@@ -2607,6 +2819,7 @@
         if (podiumInterval) clearInterval(podiumInterval);
         if (rewardsInterval) clearInterval(rewardsInterval);
         if (dualRewardTimer) clearInterval(dualRewardTimer);
+        if (trackDualInterval) clearInterval(trackDualInterval);
         stopCatalogDualAnimation();
       } else {
         updateTimer();
@@ -2616,6 +2829,10 @@
           const nextIdx = (currentPodiumIdx + 1) % podiumPrizes.length;
           showPodiumSlide(nextIdx);
         }, 3000);
+        trackDualInterval = setInterval(() => {
+          const dualItems = trackEl.querySelectorAll('.reward-item-dual');
+          dualItems.forEach(item => animateTrackDualItem(item));
+        }, 2800);
         rewardsInterval = setInterval(() => {
           if (isUserInteracting) return;
           currentIndex = (currentIndex + 1) % items.length;
