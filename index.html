@@ -1526,7 +1526,7 @@
     <div class="sticky-footer" id="stickyFooter">
       <div class="ticker">
         <div class="live-badge">LIVE</div>
-        <div class="ticker-text" id="tickerText">Rahul Sharma added 14 leads today!</div>
+        <div class="ticker-text" id="tickerText">Rahul S. added 14 leads today!</div>
       </div>
 
       <button class="btn-primary">ADD LEADS NOW 🚀</button>
@@ -1998,18 +1998,18 @@
     window.addEventListener('scroll', updateFooterOnScroll, { passive: true });
     updateFooterOnScroll();
 
-    // --- Dynamic Ticker with 50 Names & Weighted Random Logic ---
+    // --- Dynamic Ticker with 50 Names (First Name + Last Initial) & Weighted Random Logic ---
     const names50 = [
-      "Rahul Sharma", "Priya Patel", "Amit Kumar", "Neha Singh", "Vikram Reddy",
-      "Ananya Joshi", "Suresh Nair", "Pooja Verma", "Rohan Gupta", "Deepak Verma",
-      "Sunita Rao", "Manoj Tiwari", "Kavita Sen", "Rajesh Khanna", "Sneha Kulkarni",
-      "Vikas Yadav", "Swati Mishra", "Arjun Mehra", "Divya Agarwal", "Karan Malhotra",
-      "Preeti Choudhary", "Gaurav Bansal", "Ritu Deshmukh", "Alok Pandey", "Meera Pillai",
-      "Nitin Saxena", "Shweta Bhatia", "Harish Rawat", "Ankit Jain", "Bhavna Shah",
-      "Sanjay Goyal", "Pooja Hegde", "Tarun Das", "Shilpa Shetty", "Ashish Roy",
-      "Komal Singhania", "Vivek Anand", "Anita Mathur", "Pradeep Chauhan", "Sonia Batra",
-      "Hemant Soni", "Jyoti Sharma", "Rameshwar Prasad", "Pallavi Roy", "Dinesh Solanki",
-      "Monika Kashyap", "Varun Kapoor", "Sheetal Dubey", "Mohit Aggarwal", "Kiran Bedi"
+      "Rahul S.", "Priya P.", "Amit K.", "Neha S.", "Vikram R.",
+      "Ananya J.", "Suresh N.", "Pooja V.", "Rohan G.", "Deepak V.",
+      "Sunita R.", "Manoj T.", "Kavita S.", "Rajesh K.", "Sneha K.",
+      "Vikas Y.", "Swati M.", "Arjun M.", "Divya A.", "Karan M.",
+      "Preeti C.", "Gaurav B.", "Ritu D.", "Alok P.", "Meera P.",
+      "Nitin S.", "Shweta B.", "Harish R.", "Ankit J.", "Bhavna S.",
+      "Sanjay G.", "Pooja H.", "Tarun D.", "Shilpa S.", "Ashish R.",
+      "Komal S.", "Vivek A.", "Anita M.", "Pradeep C.", "Sonia B.",
+      "Hemant S.", "Jyoti S.", "Rameshwar P.", "Pallavi R.", "Dinesh S.",
+      "Monika K.", "Varun K.", "Sheetal D.", "Mohit A.", "Kiran B."
     ];
 
     function getRandomLeadCount() {
