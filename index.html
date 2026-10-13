@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Bumper Festive Bonanza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -129,33 +131,6 @@
       padding: 16px;
     }
 
-    .image-placeholder {
-      background: var(--surface-container-lowest);
-      border: 1px dashed var(--outline);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      border-radius: 12px;
-      font-size: 14px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .banner {
-      height: 180px;
-      margin: 16px;
-      background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-dark) 100%);
-      color: var(--surface);
-      font-weight: bold;
-      border: none;
-    }
-
-    .rewards-overlay {
-      position: relative;
-      height: 450px;
-      margin-bottom: 24px;
-    }
 
     .bumber-reward-header {
       display: flex;
@@ -423,16 +398,6 @@
       }
     }
 
-    /* Cards */
-    .card {
-      background-color: var(--surface-container);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 16px;
-      border: 1px solid var(--outline-variant);
-      border-top: 1px solid rgba(255, 184, 0, 0.35);
-      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
-    }
 
     /* Timer */
     .timer-card {
@@ -905,24 +870,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .stats-line {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      margin-bottom: 8px;
-    }
-    
-    .approved-leads {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    
-    .approved-icon {
-      color: var(--success);
-    }
-
-    .away-leads { color: var(--gold); }
 
     .btn-primary {
       width: 100%;
@@ -1433,12 +1380,12 @@
     </header>
 
     <!-- Banner -->
-    <img src="banner.jpg" alt="Bumper Festive Bonanza" style="width: calc(100% - 32px); height: auto; border-radius: 12px; margin: 16px; display: block;" />
+    <img src="banner.jpg" alt="Bumper Festive Bonanza" width="1024" height="512" fetchpriority="high" decoding="async" style="width: calc(100% - 32px); height: auto; aspect-ratio: 2 / 1; border-radius: 12px; margin: 16px; display: block;" />
 
     <!-- Rewards Section with Podium Auto Carousel Overlay -->
     <section class="rewards-section" style="margin-bottom: 24px;">
       <div class="podium-stage-container">
-        <img src="podium-bg.png" class="podium-bg-img" alt="Podium Background" />
+        <img src="podium-bg.png" class="podium-bg-img" alt="Podium Background" width="1024" height="682" decoding="async" />
         
         <!-- goal-reward-name below Banner overlay on podium-bg.png -->
         <div class="podium-goal-reward-name" id="podiumRewardName">Royal Enfield Bullet 350cc</div>
@@ -1446,13 +1393,13 @@
         <!-- 3 image auto carousel overlay on podium-bg.png -->
         <div class="podium-carousel-wrapper">
           <div class="podium-slide active">
-            <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" class="scale-podium-75" />
+            <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" class="scale-podium-75" decoding="async" />
           </div>
           <div class="podium-slide">
-            <img src="iphone-17.png" alt="iPhone 17" class="scale-podium-75" />
+            <img src="iphone-17.png" alt="iPhone 17" class="scale-podium-75" decoding="async" />
           </div>
           <div class="podium-slide">
-            <img src="svgs/laptop.svg" alt="High-Performance Laptop" />
+            <img src="svgs/laptop.svg" alt="High-Performance Laptop" decoding="async" />
           </div>
         </div>
 
@@ -1518,8 +1465,8 @@
     <section class="section" style="padding-top:0;">
       <div class="lead-goal-card">
         <div class="goal-arch-container" onclick="cycleSubReward()" style="cursor: pointer;" title="Tap to see alternative reward option">
-          <img src="arch-bg.png" alt="Golden Arch" class="goal-arch-img" />
-          <img src="svgs/doubledoor-fridge.svg" alt="Goal Reward" id="goalRewardImg" class="goal-reward-img" />
+          <img src="arch-bg.png" alt="Golden Arch" class="goal-arch-img" width="1024" height="682" loading="lazy" decoding="async" />
+          <img src="svgs/doubledoor-fridge.svg" alt="Goal Reward" id="goalRewardImg" class="goal-reward-img" loading="lazy" decoding="async" />
         </div>
         
         <div class="goal-reward-name" id="rewardNameText" onclick="cycleSubReward()" title="Tap to see alternative reward option">Double-Door Refrigerator</div>
@@ -1723,7 +1670,7 @@
           <!-- Milestone 1: 1000 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" />
+              <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" loading="lazy" decoding="async" />
             </div>
             <div class="catalog-item-title">Royal Enfield Bullet 350cc</div>
             <div class="catalog-item-req">
@@ -1734,7 +1681,7 @@
           <!-- Milestone 2: 750 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="iphone-17.png" alt="iPhone 17" />
+              <img src="iphone-17.png" alt="iPhone 17" loading="lazy" decoding="async" />
             </div>
             <div class="catalog-item-title">iPhone 17</div>
             <div class="catalog-item-req">
@@ -1745,7 +1692,7 @@
           <!-- Milestone 3: 500 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/laptop.svg" alt="Laptop" />
+              <img src="svgs/laptop.svg" alt="Laptop" loading="lazy" decoding="async" />
             </div>
             <div class="catalog-item-title">Laptop</div>
             <div class="catalog-item-req">
@@ -1758,10 +1705,10 @@
             <div class="catalog-thumb catalog-thumb-dual">
               <div class="catalog-thumb-slider">
                 <div class="catalog-thumb-slide active">
-                  <img src="svgs/doubledoor-fridge.svg" alt="Double-Door Refrigerator" />
+                  <img src="svgs/doubledoor-fridge.svg" alt="Double-Door Refrigerator" loading="lazy" decoding="async" />
                 </div>
                 <div class="catalog-thumb-slide">
-                  <img src="svgs/washing machine.svg" alt="Fully Automatic Washing Machine" />
+                  <img src="svgs/washing machine.svg" alt="Fully Automatic Washing Machine" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -1786,7 +1733,7 @@
           <!-- Milestone 5: 150 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/smart-tv.png" alt="40-inch Smart TV" />
+              <img src="svgs/smart-tv.png" alt="40-inch Smart TV" loading="lazy" decoding="async" />
             </div>
             <div class="catalog-item-title">40-inch Smart TV</div>
             <div class="catalog-item-req">
@@ -1797,7 +1744,7 @@
           <!-- Milestone 6: 100 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/air-fryer.svg" alt="Air Fryer" />
+              <img src="svgs/air-fryer.svg" alt="Air Fryer" loading="lazy" decoding="async" />
             </div>
             <div class="catalog-item-title">Air Fryer</div>
             <div class="catalog-item-req">
@@ -1810,10 +1757,10 @@
             <div class="catalog-thumb catalog-thumb-dual">
               <div class="catalog-thumb-slider">
                 <div class="catalog-thumb-slide active">
-                  <img src="svgs/breakfast-maker.svg" alt="AI Breakfast Maker" />
+                  <img src="svgs/breakfast-maker.svg" alt="AI Breakfast Maker" loading="lazy" decoding="async" />
                 </div>
                 <div class="catalog-thumb-slide">
-                  <img src="svgs/water-purifier.svg" alt="AI Water Purifier" />
+                  <img src="svgs/water-purifier.svg" alt="AI Water Purifier" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -1840,10 +1787,10 @@
             <div class="catalog-thumb catalog-thumb-dual">
               <div class="catalog-thumb-slider">
                 <div class="catalog-thumb-slide active">
-                  <img src="svgs/coffe-maker.svg" alt="Coffee Machine" />
+                  <img src="svgs/coffe-maker.svg" alt="Coffee Machine" loading="lazy" decoding="async" />
                 </div>
                 <div class="catalog-thumb-slide">
-                  <img src="svgs/iron.svg" alt="Branded Iron" />
+                  <img src="svgs/iron.svg" alt="Branded Iron" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -1868,7 +1815,7 @@
           <!-- Milestone 9: 25 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/Specil-gift.svg" alt="Special Gift from BankSathi" />
+              <img src="svgs/Specil-gift.svg" alt="Special Gift from BankSathi" loading="lazy" decoding="async" />
             </div>
             <div class="catalog-item-title">Special Gift from BankSathi</div>
             <div class="catalog-item-req">
@@ -1907,7 +1854,7 @@
       document.getElementById("t-secs").innerText = seconds.toString().padStart(2, '0');
     }
     
-    setInterval(updateTimer, 1000);
+    let timerInterval = setInterval(updateTimer, 1000);
     updateTimer();
 
     // --- Bottom Sheet Logic ---
@@ -2085,7 +2032,7 @@
       tickerEl.parentNode.replaceChild(newEl, tickerEl);
     }
     
-    setInterval(updateTicker, 3500);
+    let tickerInterval = setInterval(updateTicker, 3500);
 
     // --- 3-Image Podium Auto Carousel with 3 Names Overlay on podium-bg.png ---
     const podiumPrizes = [
@@ -2118,7 +2065,7 @@
       });
     }
 
-    setInterval(() => {
+    let podiumInterval = setInterval(() => {
       const nextIdx = (currentPodiumIdx + 1) % podiumPrizes.length;
       showPodiumSlide(nextIdx);
     }, 3000);
@@ -2140,61 +2087,45 @@
       <div class="reward-item">
         <div class="reward-name" title="${r.name}">${r.name}</div>
         <div class="reward-image-container">
-          <img src="${r.img}" style="width: 80px; height: 80px; object-fit: contain; z-index: 1; position: relative;" />
+          <img src="${r.img}" loading="lazy" decoding="async" style="width: 80px; height: 80px; object-fit: contain; z-index: 1; position: relative;" alt="${r.name}" />
           <div class="leads-chip" style="font-size: 11px; padding: 3px 12px; bottom: -10px;">${r.leads} Leads</div>
         </div>
       </div>
     `).join('');
     
     const trackEl = document.getElementById('track1');
-    trackEl.innerHTML = trackHTML.repeat(40); // Duplicate to simulate seamless infinite loop
+    trackEl.innerHTML = trackHTML.repeat(10); // 10 cycles (90 items) is lightweight & plenty for infinite scroll
 
     const scroller = document.querySelector('.rewards-scroll-container');
     const items = trackEl.querySelectorAll('.reward-item');
 
-    // Zoom ONLY when item is centered in the container
+    let currentlyActiveItem = null;
     function updateActiveRewardItem() {
       if (!scroller || !items.length) return;
-      const scrollerRect = scroller.getBoundingClientRect();
-      const scrollerCenterX = scrollerRect.left + scrollerRect.width / 2;
-
-      let closestItem = null;
-      let minDistance = Infinity;
-
-      items.forEach(item => {
-        const itemRect = item.getBoundingClientRect();
-        if (itemRect.right < scrollerRect.left - 200 || itemRect.left > scrollerRect.right + 200) {
-          item.classList.remove('active');
-          return;
-        }
-        const itemCenterX = itemRect.left + itemRect.width / 2;
-        const distance = Math.abs(scrollerCenterX - itemCenterX);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestItem = item;
-        }
-      });
-
-      items.forEach(item => {
-        if (item === closestItem && minDistance < 60) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
+      const centerIdx = Math.max(0, Math.min(items.length - 1, Math.round(scroller.scrollLeft / 220)));
+      const closestItem = items[centerIdx];
+      if (closestItem !== currentlyActiveItem) {
+        if (currentlyActiveItem) currentlyActiveItem.classList.remove('active');
+        if (closestItem) closestItem.classList.add('active');
+        currentlyActiveItem = closestItem;
+      }
     }
 
+    let scrollRafId = null;
     scroller.addEventListener('scroll', () => {
-      requestAnimationFrame(updateActiveRewardItem);
+      if (!scrollRafId) {
+        scrollRafId = requestAnimationFrame(() => {
+          updateActiveRewardItem();
+          scrollRafId = null;
+        });
+      }
     }, { passive: true });
 
-    let currentIndex = rewards.length * 20; // Start in middle of duplicates
+    let currentIndex = rewards.length * 5; // Start in middle of duplicates
     
     function scrollCarouselTo(index, smooth = true) {
-      const item = items[index];
-      if (!item || !scroller) return;
-      // Center item in container horizontally only
-      const targetLeft = item.offsetLeft - (scroller.clientWidth - item.clientWidth) / 2;
+      if (!scroller) return;
+      const targetLeft = index * 220;
       scroller.scrollTo({
         left: targetLeft,
         behavior: smooth ? 'smooth' : 'auto'
@@ -2214,10 +2145,15 @@
     scroller.addEventListener('mouseenter', () => { isUserInteracting = true; });
     scroller.addEventListener('mouseleave', () => { isUserInteracting = false; });
 
-    setInterval(() => {
+    let rewardsInterval = setInterval(() => {
       if (isUserInteracting) return;
       currentIndex = (currentIndex + 1) % items.length;
-      scrollCarouselTo(currentIndex, true);
+      if (currentIndex > items.length - 15) {
+        currentIndex = rewards.length * 4;
+        scrollCarouselTo(currentIndex, false);
+      } else {
+        scrollCarouselTo(currentIndex, true);
+      }
     }, 3000);
 
     // --- Interactive Lead Goal Slider Logic ---
@@ -2524,13 +2460,23 @@
         }
       });
 
+      let rafDragId = null;
       progressBar.addEventListener('pointermove', (e) => {
-        if (isDragging) handleProgressMove(e.clientX, true);
+        if (isDragging) {
+          const clientX = e.clientX;
+          if (!rafDragId) {
+            rafDragId = requestAnimationFrame(() => {
+              handleProgressMove(clientX, true);
+              rafDragId = null;
+            });
+          }
+        }
       });
 
       progressBar.addEventListener('pointerup', (e) => {
         if (isDragging) {
           isDragging = false;
+          if (rafDragId) { cancelAnimationFrame(rafDragId); rafDragId = null; }
           if (progressThumb) progressThumb.classList.remove('dragging');
           if (typeof progressBar.releasePointerCapture === 'function') {
             try { progressBar.releasePointerCapture(e.pointerId); } catch (_) {}
@@ -2541,12 +2487,46 @@
       progressBar.addEventListener('pointercancel', (e) => {
         if (isDragging) {
           isDragging = false;
+          if (rafDragId) { cancelAnimationFrame(rafDragId); rafDragId = null; }
           if (progressThumb) progressThumb.classList.remove('dragging');
         }
       });
 
       progressBar.addEventListener('click', (e) => handleProgressMove(e.clientX, true));
     }
+
+    // --- Page Visibility API (Pause background animations and timers when tab is hidden) ---
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (timerInterval) clearInterval(timerInterval);
+        if (tickerInterval) clearInterval(tickerInterval);
+        if (podiumInterval) clearInterval(podiumInterval);
+        if (rewardsInterval) clearInterval(rewardsInterval);
+        if (dualRewardTimer) clearInterval(dualRewardTimer);
+        stopCatalogDualAnimation();
+      } else {
+        updateTimer();
+        timerInterval = setInterval(updateTimer, 1000);
+        tickerInterval = setInterval(updateTicker, 3500);
+        podiumInterval = setInterval(() => {
+          const nextIdx = (currentPodiumIdx + 1) % podiumPrizes.length;
+          showPodiumSlide(nextIdx);
+        }, 3000);
+        rewardsInterval = setInterval(() => {
+          if (isUserInteracting) return;
+          currentIndex = (currentIndex + 1) % items.length;
+          if (currentIndex > items.length - 15) {
+            currentIndex = rewards.length * 4;
+            scrollCarouselTo(currentIndex, false);
+          } else {
+            scrollCarouselTo(currentIndex, true);
+          }
+        }, 3000);
+        if (catalogDialog && catalogDialog.open) {
+          startCatalogDualAnimation();
+        }
+      }
+    });
 
   </script>
 </body>
