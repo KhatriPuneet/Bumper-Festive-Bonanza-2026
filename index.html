@@ -596,6 +596,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 100%;
+      min-height: 22px;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      cursor: pointer;
     }
 
     .calculator-box {
@@ -1402,12 +1405,12 @@
     <!-- Lead Goal Section -->
     <section class="section" style="padding-top:0;">
       <div class="lead-goal-card">
-        <div class="goal-arch-container">
+        <div class="goal-arch-container" onclick="cycleSubReward()" style="cursor: pointer;" title="Tap to see alternative reward option">
           <img src="arch-bg.png" alt="Golden Arch" class="goal-arch-img" />
           <img src="svgs/doubledoor-fridge.svg" alt="Goal Reward" id="goalRewardImg" class="goal-reward-img" />
         </div>
         
-        <div class="goal-reward-name" id="rewardNameText">Double-Door Refrigerator OR Fully Automatic Washing Machine</div>
+        <div class="goal-reward-name" id="rewardNameText" onclick="cycleSubReward()" title="Tap to see alternative reward option">Double-Door Refrigerator</div>
 
         <div class="calculator-box">
           <div class="goal-header">
@@ -1421,11 +1424,9 @@
           </div>
 
           <div class="progress-milestones" id="milestonesRow">
-            <span data-leads="25">25</span>
             <span data-leads="50">50</span>
             <span data-leads="75">75</span>
             <span data-leads="100">100</span>
-            <span data-leads="150">150</span>
             <span data-leads="250" class="active">250</span>
             <span data-leads="500">500</span>
             <span data-leads="750">750</span>
@@ -1590,28 +1591,28 @@
         <div class="catalog-header-top">
           <div class="catalog-title" id="catalogTitle">🎁 Complete Festive Rewards Catalog</div>
           <div class="catalog-header-right">
-            <span class="milestones-pill">8 Milestones</span>
+            <span class="milestones-pill">10 Rewards</span>
             <button class="catalog-close-btn" onclick="closeCatalogSheet()" aria-label="Close catalog">&times;</button>
           </div>
         </div>
-        <div class="catalog-subtitle">Win gifts on every verified milestone reached by 9 Nov</div>
+        <div class="catalog-subtitle">Win assured gifts on every verified milestone reached by 9 Nov</div>
       </div>
 
       <div class="catalog-sheet-body">
         <div class="catalog-list">
-          <!-- Item 1 -->
+          <!-- Item 1: 1000 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350CC" />
+              <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" />
             </div>
-            <div class="catalog-item-title">Royal Enfield Bullet 350CC</div>
+            <div class="catalog-item-title">Royal Enfield Bullet 350cc</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">1000 Leads</span>
             </div>
           </div>
 
-          <!-- Item 2 -->
+          <!-- Item 2: 750 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="iphone-17.png" alt="Brand New iPhone 17" />
@@ -1619,11 +1620,11 @@
             <div class="catalog-item-title">Brand New iPhone 17</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
-              <span class="req-leads">700 Leads</span>
+              <span class="req-leads">750 Leads</span>
             </div>
           </div>
 
-          <!-- Item 3 -->
+          <!-- Item 3: 500 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/laptop.svg" alt="High-Performance Laptop" />
@@ -1635,19 +1636,31 @@
             </div>
           </div>
 
-          <!-- Item 4 -->
+          <!-- Item 4: 250 Leads (Choice 1) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/doubledoor-fridge.svg" alt="Double Door Fridge / Auto Washer" />
+              <img src="svgs/doubledoor-fridge.svg" alt="Double-Door Refrigerator" />
             </div>
-            <div class="catalog-item-title">Double Door Fridge / Auto Washer</div>
+            <div class="catalog-item-title">Double-Door Refrigerator</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">250 Leads</span>
             </div>
           </div>
 
-          <!-- Item 5 -->
+          <!-- Item 5: 250 Leads (Choice 2) -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/washing machine.svg" alt="Fully Automatic Washing Machine" />
+            </div>
+            <div class="catalog-item-title">Fully Automatic Washing Machine</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">250 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 6: 100 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/air-fryer.svg" alt="Digital Smart Air Fryer" />
@@ -1655,43 +1668,55 @@
             <div class="catalog-item-title">Digital Smart Air Fryer</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
-              <span class="req-leads">150 Leads</span>
-            </div>
-          </div>
-
-          <!-- Item 6 -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/breakfast-maker.svg" alt="Breakfast Maker / RO Purifier" />
-            </div>
-            <div class="catalog-item-title">Breakfast Maker / RO Purifier</div>
-            <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
               <span class="req-leads">100 Leads</span>
             </div>
           </div>
 
-          <!-- Item 7 -->
+          <!-- Item 7: 75 Leads (Choice 1) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/coffe-maker.svg" alt="Coffee Machine / Steam Iron" />
+              <img src="svgs/breakfast-maker.svg" alt="AI Breakfast Maker" />
             </div>
-            <div class="catalog-item-title">Coffee Machine / Steam Iron</div>
+            <div class="catalog-item-title">AI Breakfast Maker</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">75 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 8: 75 Leads (Choice 2) -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/water-purifier.svg" alt="AI Water Purifier" />
+            </div>
+            <div class="catalog-item-title">AI Water Purifier</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">75 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 9: 50 Leads (Choice 1) -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/coffe-maker.svg" alt="Coffee Machine" />
+            </div>
+            <div class="catalog-item-title">Coffee Machine</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">50 Leads</span>
             </div>
           </div>
 
-          <!-- Item 8 -->
+          <!-- Item 10: 50 Leads (Choice 2) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/Specil-gift.svg" alt="Certificate + Gift Box" />
+              <img src="svgs/iron.svg" alt="Branded Steam Iron" />
             </div>
-            <div class="catalog-item-title">Certificate + Gift Box</div>
+            <div class="catalog-item-title">Branded Steam Iron</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
-              <span class="req-leads">20 Leads</span>
+              <span class="req-leads">50 Leads</span>
             </div>
           </div>
         </div>
@@ -1887,11 +1912,13 @@
 
     // --- Rewards Auto Scroll Setup (Intermediate milestones only; top 3 bumper prizes excluded) ---
     const rewards = [
-      { name: "Certificate + Gift Box", img: "svgs/Specil-gift.svg", leads: "20" },
-      { name: "Coffee Machine / Steam Iron", img: "svgs/coffe-maker.svg", leads: "50" },
-      { name: "Breakfast Maker / RO Purifier", img: "svgs/breakfast-maker.svg", leads: "100" },
-      { name: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg", leads: "150" },
-      { name: "Double Door Fridge / Auto Washer", img: "svgs/doubledoor-fridge.svg", leads: "250" }
+      { name: "Coffee Machine", img: "svgs/coffe-maker.svg", leads: "50" },
+      { name: "Branded Steam Iron", img: "svgs/iron.svg", leads: "50" },
+      { name: "AI Breakfast Maker", img: "svgs/breakfast-maker.svg", leads: "75" },
+      { name: "AI Water Purifier", img: "svgs/water-purifier.svg", leads: "75" },
+      { name: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg", leads: "100" },
+      { name: "Double-Door Refrigerator", img: "svgs/doubledoor-fridge.svg", leads: "250" },
+      { name: "Fully Automatic Washing Machine", img: "svgs/washing machine.svg", leads: "250" }
     ];
     
     const trackHTML = rewards.map(r => `
@@ -1980,15 +2007,51 @@
 
     // --- Interactive Lead Goal Slider Logic ---
     const goalMilestonesData = [
-      { leads: 25, reward: "Special Gift from BankSathi", img: "svgs/Specil-gift.svg" },
-      { leads: 50, reward: "Coffee Machine OR Branded Iron", img: "svgs/coffe-maker.svg" },
-      { leads: 75, reward: "AI Breakfast Maker OR AI Water Purifier", img: "svgs/breakfast-maker.svg" },
-      { leads: 100, reward: "Air Fryer", img: "svgs/air-fryer.svg" },
-      { leads: 150, reward: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg" },
-      { leads: 250, reward: "Double-Door Refrigerator OR Fully Automatic Washing Machine", img: "svgs/doubledoor-fridge.svg" },
-      { leads: 500, reward: "High-Performance Laptop", img: "svgs/laptop.svg" },
-      { leads: 750, reward: "Brand New iPhone 17", img: "iphone-17.png" },
-      { leads: 1000, reward: "Royal Enfield Bullet 350cc", img: "svgs/bullet-350.svg" }
+      {
+        leads: 50,
+        rewards: [
+          { name: "Coffee Machine", img: "svgs/coffe-maker.svg" },
+          { name: "Branded Steam Iron", img: "svgs/iron.svg" }
+        ]
+      },
+      {
+        leads: 75,
+        rewards: [
+          { name: "AI Breakfast Maker", img: "svgs/breakfast-maker.svg" },
+          { name: "AI Water Purifier", img: "svgs/water-purifier.svg" }
+        ]
+      },
+      {
+        leads: 100,
+        rewards: [
+          { name: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg" }
+        ]
+      },
+      {
+        leads: 250,
+        rewards: [
+          { name: "Double-Door Refrigerator", img: "svgs/doubledoor-fridge.svg" },
+          { name: "Fully Automatic Washing Machine", img: "svgs/washing machine.svg" }
+        ]
+      },
+      {
+        leads: 500,
+        rewards: [
+          { name: "High-Performance Laptop", img: "svgs/laptop.svg" }
+        ]
+      },
+      {
+        leads: 750,
+        rewards: [
+          { name: "Brand New iPhone 17", img: "iphone-17.png" }
+        ]
+      },
+      {
+        leads: 1000,
+        rewards: [
+          { name: "Royal Enfield Bullet 350cc", img: "svgs/bullet-350.svg" }
+        ]
+      }
     ];
 
     const progressBar = document.getElementById('progressBarContainer');
@@ -2068,12 +2131,77 @@
     }
 
     let currentGoalIdx = -1;
+    let dualRewardTimer = null;
+    let currentSubRewardIdx = 0;
+
+    function displayReward(reward, animate = true) {
+      if (!reward) return;
+      const isFridge = reward.img.includes('doubledoor-fridge');
+      const targetScale = isFridge ? 1.0 : 1.5;
+
+      if (rewardNameText) {
+        if (animate) {
+          rewardNameText.style.opacity = '0';
+          rewardNameText.style.transform = 'translateY(-6px)';
+          setTimeout(() => {
+            rewardNameText.innerText = reward.name;
+            rewardNameText.title = reward.name;
+            rewardNameText.style.opacity = '1';
+            rewardNameText.style.transform = 'translateY(0)';
+          }, 140);
+        } else {
+          rewardNameText.innerText = reward.name;
+          rewardNameText.title = reward.name;
+          rewardNameText.style.opacity = '1';
+          rewardNameText.style.transform = 'translateY(0)';
+        }
+      }
+
+      if (goalRewardImg && reward.img) {
+        if (animate) {
+          goalRewardImg.style.opacity = '0';
+          goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale * 0.88})`;
+          setTimeout(() => {
+            goalRewardImg.src = reward.img;
+            goalRewardImg.alt = reward.name;
+            goalRewardImg.style.opacity = '1';
+            goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale})`;
+            if (isFridge) {
+              goalRewardImg.classList.remove('scaled-15x');
+            } else {
+              goalRewardImg.classList.add('scaled-15x');
+            }
+          }, 140);
+        } else {
+          goalRewardImg.src = reward.img;
+          goalRewardImg.alt = reward.name;
+          goalRewardImg.style.opacity = '1';
+          goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale})`;
+          if (isFridge) {
+            goalRewardImg.classList.remove('scaled-15x');
+          } else {
+            goalRewardImg.classList.add('scaled-15x');
+          }
+        }
+      }
+    }
+
+    function cycleSubReward() {
+      const milestone = goalMilestonesData[currentGoalIdx];
+      if (milestone && milestone.rewards.length > 1) {
+        currentSubRewardIdx = (currentSubRewardIdx + 1) % milestone.rewards.length;
+        displayReward(milestone.rewards[currentSubRewardIdx], true);
+        triggerHaptics(false);
+      }
+    }
 
     function setGoalIndex(idx, userInitiated = false) {
       if (idx < 0 || idx >= goalMilestonesData.length) return;
       const isNewIndex = currentGoalIdx !== idx;
       currentGoalIdx = idx;
-      const item = goalMilestonesData[idx];
+      const milestone = goalMilestonesData[idx];
+
+      // Align thumb
       const targetSpan = milestoneSpans[idx];
       if (targetSpan && progressBar && progressThumb) {
         const cRect = progressBar.getBoundingClientRect();
@@ -2081,15 +2209,30 @@
         const thumbLeft = (sRect.left + sRect.width / 2) - cRect.left;
         progressThumb.style.left = `${thumbLeft}px`;
       }
-      if (goalValText) goalValText.innerText = `${item.leads} Leads`;
-      if (rewardNameText) {
-        rewardNameText.innerText = item.reward;
-        rewardNameText.title = item.reward;
+
+      if (goalValText) goalValText.innerText = `${milestone.leads} Leads`;
+
+      // Clear any ongoing alternation interval
+      if (dualRewardTimer) {
+        clearInterval(dualRewardTimer);
+        dualRewardTimer = null;
+      }
+      currentSubRewardIdx = 0;
+
+      // Display active milestone reward
+      displayReward(milestone.rewards[0], isNewIndex);
+
+      // If milestone has dual rewards, alternate smoothly between them as text slider and synced image
+      if (milestone.rewards.length > 1) {
+        dualRewardTimer = setInterval(() => {
+          currentSubRewardIdx = (currentSubRewardIdx + 1) % milestone.rewards.length;
+          displayReward(milestone.rewards[currentSubRewardIdx], true);
+        }, 2800);
       }
 
       // Haptic feedback on user interaction
       if (userInitiated && isNewIndex) {
-        triggerHaptics(item.leads === 1000);
+        triggerHaptics(milestone.leads === 1000);
         if (progressThumb) {
           progressThumb.classList.remove('haptic-pop');
           void progressThumb.offsetWidth;
@@ -2100,25 +2243,6 @@
           void goalValText.offsetWidth;
           goalValText.classList.add('haptic-pop');
         }
-      }
-
-      // Sync reward photo with goal milestone and overlay on arch-bg.png (scale all to 1.5x except doubledoor-fridge)
-      if (goalRewardImg && item.img) {
-        const isFridge = item.img.includes('doubledoor-fridge');
-        const targetScale = isFridge ? 1.0 : 1.5;
-        goalRewardImg.style.opacity = '0';
-        goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale * 0.85})`;
-        setTimeout(() => {
-          goalRewardImg.src = item.img;
-          goalRewardImg.alt = item.reward;
-          goalRewardImg.style.opacity = '1';
-          goalRewardImg.style.transform = `translate(-50%, -46%) scale(${targetScale})`;
-          if (isFridge) {
-            goalRewardImg.classList.remove('scaled-15x');
-          } else {
-            goalRewardImg.classList.add('scaled-15x');
-          }
-        }, 120);
       }
 
       milestoneSpans.forEach((span, i) => {
@@ -2132,13 +2256,12 @@
 
     window.addEventListener('resize', () => {
       alignProgressTrack();
-      const activeIdx = Array.from(milestoneSpans).findIndex(s => s.classList.contains('active'));
-      setGoalIndex(activeIdx >= 0 ? activeIdx : 5, false);
+      setGoalIndex(currentGoalIdx >= 0 ? currentGoalIdx : 3, false);
     });
 
     setTimeout(() => {
       alignProgressTrack();
-      setGoalIndex(5, false);
+      setGoalIndex(3, false);
     }, 50);
 
     milestoneSpans.forEach((span, i) => {
@@ -2148,9 +2271,18 @@
 
     if (progressBar) {
       function handleProgressMove(clientX, userInitiated = true) {
-        const rect = progressBar.getBoundingClientRect();
-        const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-        const closestIdx = Math.round(ratio * (goalMilestonesData.length - 1));
+        if (!milestoneSpans.length) return;
+        let closestIdx = 0;
+        let minDiff = Infinity;
+        milestoneSpans.forEach((span, i) => {
+          const sRect = span.getBoundingClientRect();
+          const sCenter = sRect.left + sRect.width / 2;
+          const diff = Math.abs(clientX - sCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = i;
+          }
+        });
         setGoalIndex(closestIdx, userInitiated);
       }
 
