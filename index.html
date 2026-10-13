@@ -1424,9 +1424,11 @@
           </div>
 
           <div class="progress-milestones" id="milestonesRow">
+            <span data-leads="25">25</span>
             <span data-leads="50">50</span>
             <span data-leads="75">75</span>
             <span data-leads="100">100</span>
+            <span data-leads="150">150</span>
             <span data-leads="250" class="active">250</span>
             <span data-leads="500">500</span>
             <span data-leads="750">750</span>
@@ -1591,7 +1593,7 @@
         <div class="catalog-header-top">
           <div class="catalog-title" id="catalogTitle">🎁 Complete Festive Rewards Catalog</div>
           <div class="catalog-header-right">
-            <span class="milestones-pill">10 Rewards</span>
+            <span class="milestones-pill">9 Milestones • 12 Rewards</span>
             <button class="catalog-close-btn" onclick="closeCatalogSheet()" aria-label="Close catalog">&times;</button>
           </div>
         </div>
@@ -1615,9 +1617,9 @@
           <!-- Item 2: 750 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="iphone-17.png" alt="Brand New iPhone 17" />
+              <img src="iphone-17.png" alt="iPhone 17" />
             </div>
-            <div class="catalog-item-title">Brand New iPhone 17</div>
+            <div class="catalog-item-title">iPhone 17</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">750 Leads</span>
@@ -1627,9 +1629,9 @@
           <!-- Item 3: 500 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/laptop.svg" alt="High-Performance Laptop" />
+              <img src="svgs/laptop.svg" alt="Laptop" />
             </div>
-            <div class="catalog-item-title">High–Performance Laptop</div>
+            <div class="catalog-item-title">Laptop</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">500 Leads</span>
@@ -1660,19 +1662,31 @@
             </div>
           </div>
 
-          <!-- Item 6: 100 Leads -->
+          <!-- Item 6: 150 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/air-fryer.svg" alt="Digital Smart Air Fryer" />
+              <img src="svgs/smart-tv.png" alt="40-inch Smart TV" />
             </div>
-            <div class="catalog-item-title">Digital Smart Air Fryer</div>
+            <div class="catalog-item-title">40-inch Smart TV</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">150 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 7: 100 Leads -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/air-fryer.svg" alt="Air Fryer" />
+            </div>
+            <div class="catalog-item-title">Air Fryer</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">100 Leads</span>
             </div>
           </div>
 
-          <!-- Item 7: 75 Leads (Choice 1) -->
+          <!-- Item 8: 75 Leads (Choice 1) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/breakfast-maker.svg" alt="AI Breakfast Maker" />
@@ -1684,7 +1698,7 @@
             </div>
           </div>
 
-          <!-- Item 8: 75 Leads (Choice 2) -->
+          <!-- Item 9: 75 Leads (Choice 2) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/water-purifier.svg" alt="AI Water Purifier" />
@@ -1696,7 +1710,7 @@
             </div>
           </div>
 
-          <!-- Item 9: 50 Leads (Choice 1) -->
+          <!-- Item 10: 50 Leads (Choice 1) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/coffe-maker.svg" alt="Coffee Machine" />
@@ -1708,15 +1722,27 @@
             </div>
           </div>
 
-          <!-- Item 10: 50 Leads (Choice 2) -->
+          <!-- Item 11: 50 Leads (Choice 2) -->
           <div class="catalog-item">
             <div class="catalog-thumb">
-              <img src="svgs/iron.svg" alt="Branded Steam Iron" />
+              <img src="svgs/iron.svg" alt="Branded Iron" />
             </div>
-            <div class="catalog-item-title">Branded Steam Iron</div>
+            <div class="catalog-item-title">Branded Iron</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">50 Leads</span>
+            </div>
+          </div>
+
+          <!-- Item 12: 25 Leads -->
+          <div class="catalog-item">
+            <div class="catalog-thumb">
+              <img src="svgs/Specil-gift.svg" alt="Special Gift from BankSathi" />
+            </div>
+            <div class="catalog-item-title">Special Gift from BankSathi</div>
+            <div class="catalog-item-req">
+              <span class="req-label">REQUIRED</span>
+              <span class="req-leads">25 Leads</span>
             </div>
           </div>
         </div>
@@ -1878,7 +1904,7 @@
     const podiumPrizes = [
       { name: "Royal Enfield Bullet 350cc", img: "svgs/bullet-350.svg" },
       { name: "iPhone 17", img: "iphone-17.png" },
-      { name: "High-Performance Laptop", img: "svgs/laptop.svg" }
+      { name: "Laptop", img: "svgs/laptop.svg" }
     ];
 
     let currentPodiumIdx = 0;
@@ -1912,11 +1938,13 @@
 
     // --- Rewards Auto Scroll Setup (Intermediate milestones only; top 3 bumper prizes excluded) ---
     const rewards = [
+      { name: "Special Gift from BankSathi", img: "svgs/Specil-gift.svg", leads: "25" },
       { name: "Coffee Machine", img: "svgs/coffe-maker.svg", leads: "50" },
-      { name: "Branded Steam Iron", img: "svgs/iron.svg", leads: "50" },
+      { name: "Branded Iron", img: "svgs/iron.svg", leads: "50" },
       { name: "AI Breakfast Maker", img: "svgs/breakfast-maker.svg", leads: "75" },
       { name: "AI Water Purifier", img: "svgs/water-purifier.svg", leads: "75" },
-      { name: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg", leads: "100" },
+      { name: "Air Fryer", img: "svgs/air-fryer.svg", leads: "100" },
+      { name: "40-inch Smart TV", img: "svgs/smart-tv.png", leads: "150" },
       { name: "Double-Door Refrigerator", img: "svgs/doubledoor-fridge.svg", leads: "250" },
       { name: "Fully Automatic Washing Machine", img: "svgs/washing machine.svg", leads: "250" }
     ];
@@ -2008,10 +2036,16 @@
     // --- Interactive Lead Goal Slider Logic ---
     const goalMilestonesData = [
       {
+        leads: 25,
+        rewards: [
+          { name: "Special Gift from BankSathi", img: "svgs/Specil-gift.svg" }
+        ]
+      },
+      {
         leads: 50,
         rewards: [
           { name: "Coffee Machine", img: "svgs/coffe-maker.svg" },
-          { name: "Branded Steam Iron", img: "svgs/iron.svg" }
+          { name: "Branded Iron", img: "svgs/iron.svg" }
         ]
       },
       {
@@ -2024,7 +2058,13 @@
       {
         leads: 100,
         rewards: [
-          { name: "Digital Smart Air Fryer", img: "svgs/air-fryer.svg" }
+          { name: "Air Fryer", img: "svgs/air-fryer.svg" }
+        ]
+      },
+      {
+        leads: 150,
+        rewards: [
+          { name: "40-inch Smart TV", img: "svgs/smart-tv.png" }
         ]
       },
       {
@@ -2037,13 +2077,13 @@
       {
         leads: 500,
         rewards: [
-          { name: "High-Performance Laptop", img: "svgs/laptop.svg" }
+          { name: "Laptop", img: "svgs/laptop.svg" }
         ]
       },
       {
         leads: 750,
         rewards: [
-          { name: "Brand New iPhone 17", img: "iphone-17.png" }
+          { name: "iPhone 17", img: "iphone-17.png" }
         ]
       },
       {
@@ -2256,12 +2296,12 @@
 
     window.addEventListener('resize', () => {
       alignProgressTrack();
-      setGoalIndex(currentGoalIdx >= 0 ? currentGoalIdx : 3, false);
+      setGoalIndex(currentGoalIdx >= 0 ? currentGoalIdx : 5, false);
     });
 
     setTimeout(() => {
       alignProgressTrack();
-      setGoalIndex(3, false);
+      setGoalIndex(5, false);
     }, 50);
 
     milestoneSpans.forEach((span, i) => {
