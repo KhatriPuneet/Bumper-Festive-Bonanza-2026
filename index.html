@@ -327,22 +327,6 @@
       pointer-events: none;
     }
 
-    .reward-dual-badge {
-      position: absolute;
-      top: 6px;
-      right: 8px;
-      font-size: 8px;
-      font-weight: 800;
-      color: var(--gold);
-      background: rgba(43, 2, 30, 0.85);
-      border: 1px solid rgba(255, 184, 0, 0.5);
-      border-radius: 9999px;
-      padding: 1px 5px;
-      letter-spacing: 0.02em;
-      z-index: 2;
-      pointer-events: none;
-    }
-
     .track-or-tag {
       background: rgba(255, 184, 0, 0.25);
       border: 1px solid var(--gold);
@@ -2337,7 +2321,6 @@
       if (r.isDual) {
         return `
           <div class="reward-item reward-item-dual" onclick="toggleTrackDual(this)" title="Tap to toggle reward option">
-            <div class="reward-dual-badge">2 Choices</div>
             <div class="reward-title-slider">
               <div class="reward-title-slide active">
                 <div class="reward-name" title="${r.options[0].name}">${r.options[0].name}</div>
