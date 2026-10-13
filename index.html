@@ -791,13 +791,13 @@
     }
 
     .sticky-footer:not(.has-scrolled) .ticker .live-badge {
-      background-color: #200017;
-      color: var(--gold);
+      background-color: #D80032;
+      color: #FFFFFF;
       font-weight: 800;
     }
 
     .sticky-footer:not(.has-scrolled) .ticker .live-badge::before {
-      background-color: var(--gold);
+      background-color: #FFFFFF;
     }
 
     .sticky-footer:not(.has-scrolled) .btn-primary {
@@ -852,11 +852,11 @@
     }
 
     .live-badge {
-      background-color: var(--tertiary-neon);
-      color: var(--text-main);
+      background-color: #D80032;
+      color: #FFFFFF;
       padding: 2px 6px;
       border-radius: 4px;
-      font-weight: bold;
+      font-weight: 800;
       font-size: 9px;
       display: flex;
       align-items: center;
@@ -2026,19 +2026,50 @@
       "Monika K.", "Varun K.", "Sheetal D.", "Mohit A.", "Kiran B."
     ];
 
+    let lastTickerNameIdx = -1;
+    let lastTickerLeadCount = -1;
+    try {
+      lastTickerNameIdx = parseInt(sessionStorage.getItem('bfb_last_name_idx') || '-1', 10);
+      lastTickerLeadCount = parseInt(sessionStorage.getItem('bfb_last_lead_count') || '-1', 10);
+    } catch (_) {}
+
+    function getNextRandomName() {
+      let nextIdx = Math.floor(Math.random() * names50.length);
+      // Guarantee name is different on every page load & every cycle
+      if (nextIdx === lastTickerNameIdx && names50.length > 1) {
+        nextIdx = (nextIdx + 1 + Math.floor(Math.random() * (names50.length - 1))) % names50.length;
+      }
+      lastTickerNameIdx = nextIdx;
+      try {
+        sessionStorage.setItem('bfb_last_name_idx', nextIdx.toString());
+      } catch (_) {}
+      return names50[nextIdx];
+    }
+
     function getRandomLeadCount() {
       // 2 to 100 leads with lower probability for > 50 leads (85% chance: 2-50, 15% chance: 51-100)
-      if (Math.random() < 0.85) {
-        return Math.floor(Math.random() * (50 - 2 + 1)) + 2;
-      } else {
-        return Math.floor(Math.random() * (100 - 51 + 1)) + 51;
-      }
+      let count = 0;
+      let attempts = 0;
+      do {
+        if (Math.random() < 0.85) {
+          count = Math.floor(Math.random() * (50 - 2 + 1)) + 2;
+        } else {
+          count = Math.floor(Math.random() * (100 - 51 + 1)) + 51;
+        }
+        attempts++;
+      } while (count === lastTickerLeadCount && attempts < 5);
+
+      lastTickerLeadCount = count;
+      try {
+        sessionStorage.setItem('bfb_last_lead_count', count.toString());
+      } catch (_) {}
+      return count;
     }
 
     function updateTicker() {
       const tickerEl = document.getElementById('tickerText');
       if (!tickerEl) return;
-      const randomName = names50[Math.floor(Math.random() * names50.length)];
+      const randomName = getNextRandomName();
       const randomCount = getRandomLeadCount();
       
       const newEl = tickerEl.cloneNode(true);
@@ -2046,6 +2077,8 @@
       tickerEl.parentNode.replaceChild(newEl, tickerEl);
     }
     
+    // Trigger immediately on page load so every page load starts with a fresh, different name and count
+    updateTicker();
     let tickerInterval = setInterval(updateTicker, 3500);
 
     // --- 3-Image Podium Auto Carousel with 3 Names Overlay on podium-bg.png ---
