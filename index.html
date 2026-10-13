@@ -1378,6 +1378,19 @@
     .rule-content p {
       font-size: 12px;
       color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .rule-content a {
+      color: var(--gold);
+      text-decoration: underline;
+      font-weight: 700;
+      word-break: break-word;
+      transition: color 0.2s ease;
+    }
+
+    .rule-content a:hover {
+      color: var(--gold-light);
     }
 
     .sheet-footer {
@@ -1534,7 +1547,7 @@
       <div class="list-btn" onclick="openSheet('terms')">
         <div class="list-icon" style="color:var(--gold);">📜</div>
         <div class="list-content">
-          <div class="list-title">Contest Rules & Guidelines</div>
+          <div class="list-title">Offer Rules & Guidelines</div>
           <div class="list-subtitle">Review terms, payout cycle & eligibility criteria</div>
         </div>
         <div class="list-arrow">&gt;</div>
@@ -1567,7 +1580,7 @@
       <div class="handle"></div>
       
       <div class="sheet-header">
-        <div class="sheet-title" id="sheetTitle">📜 Campaign Guidelines & FAQs</div>
+        <div class="sheet-title" id="sheetTitle">📜 Offer Guidelines & FAQs</div>
         <button class="close-btn" onclick="closeSheet()">✕</button>
       </div>
 
@@ -1582,8 +1595,8 @@
           <div class="rule-item">
             <div class="rule-icon">📅</div>
             <div class="rule-content">
-              <h4>Campaign Period</h4>
-              <p>The Bumper Festive Bonanza runs strictly from <strong>9th October 2026 (00:01 AM)</strong> to <strong>9th November 2026 (11:59 PM)</strong>.</p>
+              <h4>Offer Validity</h4>
+              <p>The Bumper Festive Bonanza is valid for leads added between 9 October and 9 November 2026, across all product categories. Leads approved on or before 14 November 2026 will be counted towards your final reward eligibility.</p>
             </div>
           </div>
 
@@ -1591,7 +1604,7 @@
             <div class="rule-icon">✅</div>
             <div class="rule-content">
               <h4>Lead Eligibility</h4>
-              <p>Only verified, disbursed, and issued leads (Credit Cards, Personal Loans, Demat accounts) qualify towards festive milestone targets.</p>
+              <p>Only approved leads count towards your festive reward milestones. You must have at least 25 approved leads to qualify for a reward.</p>
             </div>
           </div>
 
@@ -1599,7 +1612,7 @@
             <div class="rule-icon">📦</div>
             <div class="rule-content">
               <h4>Reward Claiming & Dispatch</h4>
-              <p>Physical rewards and vehicles will be delivered to your registered and verified address within <strong>30-45 working days</strong> post campaign conclusion.</p>
+              <p>Physical gifts and vehicles will be delivered to your provided address within 30 working days after you submit your details through the reward claim form. <a href="https://forms.gle/U6svFB7n4gZSgZzd8" target="_blank" rel="noopener noreferrer">Submit Your Details ↗</a></p>
             </div>
           </div>
 
@@ -1618,6 +1631,22 @@
               <p>All festive bonanza rewards are non-transferable, non-negotiable, and strictly cannot be exchanged for cash.</p>
             </div>
           </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">🧾</div>
+            <div class="rule-content">
+              <h4>Taxes & TDS</h4>
+              <p>Any applicable taxes and TDS on rewards must be paid by the qualifying advisor.</p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">⚖️</div>
+            <div class="rule-content">
+              <h4>Final Decision</h4>
+              <p>BankSathi (BS Fintech Private Limited) reserves the right to make the final decision on reward eligibility and campaign-related matters.</p>
+            </div>
+          </div>
         </div>
 
         <!-- Frequently Asked Questions Pane -->
@@ -1626,15 +1655,15 @@
             <div class="rule-icon">🎯</div>
             <div class="rule-content">
               <h4>How are festive leads calculated?</h4>
-              <p>Every lead for Credit Cards, Personal Loans, or Demat accounts disbursed and approved between 9th Oct and 9th Nov automatically counts towards your milestone rewards.</p>
+              <p>All leads added between 9 October and 9 November 2026, across all product categories, will count towards your milestone rewards if approved by 14 November 2026.<br><br>Eligible categories include Credit Cards, Personal Loans, Bank Accounts, Insurance, Investments, Car Loans, and Demat Accounts.</p>
             </div>
           </div>
 
           <div class="rule-item">
             <div class="rule-icon">🎁</div>
             <div class="rule-content">
-              <h4>When will I receive my assured reward?</h4>
-              <p>Eligible winners are notified via the app immediately after campaign closure. Rewards are dispatched within <strong>30-45 working days</strong> to your registered address.</p>
+              <h4>When will I receive my reward?</h4>
+              <p>Eligible winners will be notified via SMS, WhatsApp, and the BankSathi app after the offer ends.<br><br>Rewards will be delivered within 30 working days after you submit your delivery details through the <a href="https://forms.gle/U6svFB7n4gZSgZzd8" target="_blank" rel="noopener noreferrer">Reward Claim Form ↗</a>.</p>
             </div>
           </div>
 
@@ -1642,7 +1671,7 @@
             <div class="rule-icon">🏍️</div>
             <div class="rule-content">
               <h4>Can I win multiple milestone rewards?</h4>
-              <p>You will receive the highest milestone reward achieved at the conclusion of the campaign (e.g. achieve 1000 leads to win the Royal Enfield Bullet 350cc).</p>
+              <p>No. You will receive only one reward, based on the highest milestone you achieve.<br><br>For example, if you reach 1,000 approved leads, you'll win a Royal Enfield Bullet 350cc, not the rewards from previous milestones.</p>
             </div>
           </div>
 
@@ -1906,7 +1935,7 @@
         if (tabFaq) tabFaq.classList.remove('active');
         if (contentTerms) contentTerms.style.display = 'block';
         if (contentFaq) contentFaq.style.display = 'none';
-        if (sheetTitle) sheetTitle.innerHTML = '📜 Campaign Guidelines';
+        if (sheetTitle) sheetTitle.innerHTML = '📜 Offer Guidelines';
       }
     }
 
