@@ -2012,8 +2012,8 @@
     window.addEventListener('scroll', updateFooterOnScroll, { passive: true });
     updateFooterOnScroll();
 
-    // --- Dynamic Ticker with 50 Names (First Name + Last Initial) & Weighted Random Logic ---
-    const names50 = [
+    // --- Dynamic Ticker with 120 Names (First Name + Last Initial) & Weighted Random Logic ---
+    const names120 = [
       "Rahul S.", "Priya P.", "Amit K.", "Neha S.", "Vikram R.",
       "Ananya J.", "Suresh N.", "Pooja V.", "Rohan G.", "Deepak V.",
       "Sunita R.", "Manoj T.", "Kavita S.", "Rajesh K.", "Sneha K.",
@@ -2023,7 +2023,21 @@
       "Sanjay G.", "Pooja H.", "Tarun D.", "Shilpa S.", "Ashish R.",
       "Komal S.", "Vivek A.", "Anita M.", "Pradeep C.", "Sonia B.",
       "Hemant S.", "Jyoti S.", "Rameshwar P.", "Pallavi R.", "Dinesh S.",
-      "Monika K.", "Varun K.", "Sheetal D.", "Mohit A.", "Kiran B."
+      "Monika K.", "Varun K.", "Sheetal D.", "Mohit A.", "Kiran B.",
+      "Aakash T.", "Aditi M.", "Akshay G.", "Anand S.", "Anshika R.",
+      "Ashwin P.", "Ayush V.", "Brijesh K.", "Chetan D.", "Deepika N.",
+      "Devendra B.", "Disha S.", "Farhan K.", "Geeta Y.", "Girraj S.",
+      "Hardik P.", "Harsh V.", "Himanshu J.", "Isha B.", "Ishaan G.",
+      "Jagdish M.", "Jitendra R.", "Juhi K.", "Kalpesh T.", "Kamal N.",
+      "Kapil S.", "Kartik P.", "Kaushik B.", "Kunal V.", "Lalit G.",
+      "Lavanya M.", "Madhav S.", "Manish K.", "Mayank R.", "Mukesh D.",
+      "Naveen C.", "Nidhi T.", "Nikhil B.", "Nirmal S.", "Omkar P.",
+      "Pankaj V.", "Parul J.", "Pawan K.", "Prashant M.", "Rachna S.",
+      "Radhika G.", "Raghav T.", "Rajeev N.", "Rajnish B.", "Rakesh D.",
+      "Riddhi P.", "Rishabh K.", "Rohit S.", "Sachin V.", "Sameer M.",
+      "Sandhya R.", "Santosh T.", "Saurabh J.", "Seema G.", "Shivam K.",
+      "Shubham B.", "Siddharth D.", "Simran P.", "Somesh N.", "Subhash S.",
+      "Sudhir M.", "Suraj V.", "Tushar K.", "Umesh R.", "Yash P."
     ];
 
     let lastTickerNameIdx = -1;
@@ -2034,16 +2048,16 @@
     } catch (_) {}
 
     function getNextRandomName() {
-      let nextIdx = Math.floor(Math.random() * names50.length);
+      let nextIdx = Math.floor(Math.random() * names120.length);
       // Guarantee name is different on every page load & every cycle
-      if (nextIdx === lastTickerNameIdx && names50.length > 1) {
-        nextIdx = (nextIdx + 1 + Math.floor(Math.random() * (names50.length - 1))) % names50.length;
+      if (nextIdx === lastTickerNameIdx && names120.length > 1) {
+        nextIdx = (nextIdx + 1 + Math.floor(Math.random() * (names120.length - 1))) % names120.length;
       }
       lastTickerNameIdx = nextIdx;
       try {
         sessionStorage.setItem('bfb_last_name_idx', nextIdx.toString());
       } catch (_) {}
-      return names50[nextIdx];
+      return names120[nextIdx];
     }
 
     function getRandomLeadCount() {
