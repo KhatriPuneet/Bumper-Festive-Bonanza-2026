@@ -1225,6 +1225,107 @@
       white-space: nowrap;
     }
 
+    /* Dual Milestone Container with Rise Up Animation */
+    .catalog-item-dual {
+      cursor: pointer;
+    }
+
+    .catalog-thumb-dual {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .catalog-thumb-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .catalog-thumb-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .catalog-thumb-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .catalog-thumb-slide.rise-up-exit {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+
+    .catalog-title-slider-container {
+      flex: 1;
+      min-width: 0;
+      height: 48px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .catalog-title-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .catalog-title-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .catalog-title-slide.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .catalog-title-slide.rise-up-exit {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+
+    .catalog-or-tag {
+      font-family: var(--font-headline);
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(255, 184, 0, 0.18);
+      border: 1px solid rgba(255, 184, 0, 0.45);
+      padding: 1px 7px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
     .tabs {
       display: flex;
       background-color: var(--surface);
@@ -1593,7 +1694,7 @@
         <div class="catalog-header-top">
           <div class="catalog-title" id="catalogTitle">🎁 Complete Festive Rewards Catalog</div>
           <div class="catalog-header-right">
-            <span class="milestones-pill">9 Milestones • 12 Rewards</span>
+            <span class="milestones-pill">9 Milestones</span>
             <button class="catalog-close-btn" onclick="closeCatalogSheet()" aria-label="Close catalog">&times;</button>
           </div>
         </div>
@@ -1602,7 +1703,7 @@
 
       <div class="catalog-sheet-body">
         <div class="catalog-list">
-          <!-- Item 1: 1000 Leads -->
+          <!-- Milestone 1: 1000 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/bullet-350.svg" alt="Royal Enfield Bullet 350cc" />
@@ -1614,7 +1715,7 @@
             </div>
           </div>
 
-          <!-- Item 2: 750 Leads -->
+          <!-- Milestone 2: 750 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="iphone-17.png" alt="iPhone 17" />
@@ -1626,7 +1727,7 @@
             </div>
           </div>
 
-          <!-- Item 3: 500 Leads -->
+          <!-- Milestone 3: 500 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/laptop.svg" alt="Laptop" />
@@ -1638,31 +1739,38 @@
             </div>
           </div>
 
-          <!-- Item 4: 250 Leads (Choice 1) -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/doubledoor-fridge.svg" alt="Double-Door Refrigerator" />
+          <!-- Milestone 4: 250 Leads (Dual Rewards in Same Container) -->
+          <div class="catalog-item catalog-item-dual" onclick="toggleDualMilestone(this)" title="Tap to toggle reward option">
+            <div class="catalog-thumb catalog-thumb-dual">
+              <div class="catalog-thumb-slider">
+                <div class="catalog-thumb-slide active">
+                  <img src="svgs/doubledoor-fridge.svg" alt="Double-Door Refrigerator" />
+                </div>
+                <div class="catalog-thumb-slide">
+                  <img src="svgs/washing machine.svg" alt="Fully Automatic Washing Machine" />
+                </div>
+              </div>
             </div>
-            <div class="catalog-item-title">Double-Door Refrigerator</div>
+
+            <div class="catalog-title-slider-container">
+              <div class="catalog-title-slider">
+                <div class="catalog-title-slide active">
+                  <span class="catalog-item-title">Double-Door Refrigerator</span>
+                  <span class="catalog-or-tag">OR</span>
+                </div>
+                <div class="catalog-title-slide">
+                  <span class="catalog-item-title">Fully Automatic Washing Machine</span>
+                </div>
+              </div>
+            </div>
+
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">250 Leads</span>
             </div>
           </div>
 
-          <!-- Item 5: 250 Leads (Choice 2) -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/washing machine.svg" alt="Fully Automatic Washing Machine" />
-            </div>
-            <div class="catalog-item-title">Fully Automatic Washing Machine</div>
-            <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
-              <span class="req-leads">250 Leads</span>
-            </div>
-          </div>
-
-          <!-- Item 6: 150 Leads -->
+          <!-- Milestone 5: 150 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/smart-tv.png" alt="40-inch Smart TV" />
@@ -1674,7 +1782,7 @@
             </div>
           </div>
 
-          <!-- Item 7: 100 Leads -->
+          <!-- Milestone 6: 100 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/air-fryer.svg" alt="Air Fryer" />
@@ -1686,55 +1794,69 @@
             </div>
           </div>
 
-          <!-- Item 8: 75 Leads (Choice 1) -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/breakfast-maker.svg" alt="AI Breakfast Maker" />
+          <!-- Milestone 7: 75 Leads (Dual Rewards in Same Container) -->
+          <div class="catalog-item catalog-item-dual" onclick="toggleDualMilestone(this)" title="Tap to toggle reward option">
+            <div class="catalog-thumb catalog-thumb-dual">
+              <div class="catalog-thumb-slider">
+                <div class="catalog-thumb-slide active">
+                  <img src="svgs/breakfast-maker.svg" alt="AI Breakfast Maker" />
+                </div>
+                <div class="catalog-thumb-slide">
+                  <img src="svgs/water-purifier.svg" alt="AI Water Purifier" />
+                </div>
+              </div>
             </div>
-            <div class="catalog-item-title">AI Breakfast Maker</div>
+
+            <div class="catalog-title-slider-container">
+              <div class="catalog-title-slider">
+                <div class="catalog-title-slide active">
+                  <span class="catalog-item-title">AI Breakfast Maker</span>
+                  <span class="catalog-or-tag">OR</span>
+                </div>
+                <div class="catalog-title-slide">
+                  <span class="catalog-item-title">AI Water Purifier</span>
+                </div>
+              </div>
+            </div>
+
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">75 Leads</span>
             </div>
           </div>
 
-          <!-- Item 9: 75 Leads (Choice 2) -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/water-purifier.svg" alt="AI Water Purifier" />
+          <!-- Milestone 8: 50 Leads (Dual Rewards in Same Container) -->
+          <div class="catalog-item catalog-item-dual" onclick="toggleDualMilestone(this)" title="Tap to toggle reward option">
+            <div class="catalog-thumb catalog-thumb-dual">
+              <div class="catalog-thumb-slider">
+                <div class="catalog-thumb-slide active">
+                  <img src="svgs/coffe-maker.svg" alt="Coffee Machine" />
+                </div>
+                <div class="catalog-thumb-slide">
+                  <img src="svgs/iron.svg" alt="Branded Iron" />
+                </div>
+              </div>
             </div>
-            <div class="catalog-item-title">AI Water Purifier</div>
-            <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
-              <span class="req-leads">75 Leads</span>
-            </div>
-          </div>
 
-          <!-- Item 10: 50 Leads (Choice 1) -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/coffe-maker.svg" alt="Coffee Machine" />
+            <div class="catalog-title-slider-container">
+              <div class="catalog-title-slider">
+                <div class="catalog-title-slide active">
+                  <span class="catalog-item-title">Coffee Machine</span>
+                  <span class="catalog-or-tag">OR</span>
+                </div>
+                <div class="catalog-title-slide">
+                  <span class="catalog-item-title">Branded Iron</span>
+                </div>
+              </div>
             </div>
-            <div class="catalog-item-title">Coffee Machine</div>
-            <div class="catalog-item-req">
-              <span class="req-label">REQUIRED</span>
-              <span class="req-leads">50 Leads</span>
-            </div>
-          </div>
 
-          <!-- Item 11: 50 Leads (Choice 2) -->
-          <div class="catalog-item">
-            <div class="catalog-thumb">
-              <img src="svgs/iron.svg" alt="Branded Iron" />
-            </div>
-            <div class="catalog-item-title">Branded Iron</div>
             <div class="catalog-item-req">
               <span class="req-label">REQUIRED</span>
               <span class="req-leads">50 Leads</span>
             </div>
           </div>
 
-          <!-- Item 12: 25 Leads -->
+          <!-- Milestone 9: 25 Leads -->
           <div class="catalog-item">
             <div class="catalog-thumb">
               <img src="svgs/Specil-gift.svg" alt="Special Gift from BankSathi" />
@@ -1831,13 +1953,70 @@
 
     // --- Complete Festive Rewards Catalog Dialog Logic ---
     const catalogDialog = document.getElementById('catalogSheet');
+    let catalogDualInterval = null;
+
+    function animateDualItem(itemEl) {
+      if (!itemEl) return;
+      const thumbSlides = itemEl.querySelectorAll('.catalog-thumb-slide');
+      const titleSlides = itemEl.querySelectorAll('.catalog-title-slide');
+      if (thumbSlides.length < 2 || titleSlides.length < 2) return;
+
+      const currentIdx = Array.from(thumbSlides).findIndex(s => s.classList.contains('active'));
+      const nextIdx = (currentIdx + 1) % thumbSlides.length;
+
+      thumbSlides[currentIdx].classList.remove('active');
+      thumbSlides[currentIdx].classList.add('rise-up-exit');
+
+      titleSlides[currentIdx].classList.remove('active');
+      titleSlides[currentIdx].classList.add('rise-up-exit');
+
+      thumbSlides[nextIdx].classList.remove('rise-up-exit');
+      thumbSlides[nextIdx].classList.add('active');
+
+      titleSlides[nextIdx].classList.remove('rise-up-exit');
+      titleSlides[nextIdx].classList.add('active');
+
+      setTimeout(() => {
+        thumbSlides[currentIdx].classList.remove('rise-up-exit');
+        titleSlides[currentIdx].classList.remove('rise-up-exit');
+      }, 480);
+    }
+
+    function startCatalogDualAnimation() {
+      if (catalogDualInterval) clearInterval(catalogDualInterval);
+      const dualItems = document.querySelectorAll('.catalog-item-dual');
+      if (!dualItems.length) return;
+      catalogDualInterval = setInterval(() => {
+        dualItems.forEach(item => animateDualItem(item));
+      }, 2800);
+    }
+
+    function stopCatalogDualAnimation() {
+      if (catalogDualInterval) {
+        clearInterval(catalogDualInterval);
+        catalogDualInterval = null;
+      }
+    }
+
+    function toggleDualMilestone(itemEl) {
+      animateDualItem(itemEl);
+      if (typeof playHapticTick === 'function') playHapticTick(false);
+    }
+
     function openCatalogSheet() {
-      if (catalogDialog) catalogDialog.showModal();
+      if (catalogDialog) {
+        catalogDialog.showModal();
+        startCatalogDualAnimation();
+      }
     }
     function closeCatalogSheet() {
-      if (catalogDialog) catalogDialog.close();
+      if (catalogDialog) {
+        catalogDialog.close();
+        stopCatalogDualAnimation();
+      }
     }
     if (catalogDialog) {
+      catalogDialog.addEventListener('close', stopCatalogDualAnimation);
       catalogDialog.addEventListener('click', (e) => {
         const rect = catalogDialog.getBoundingClientRect();
         if (
@@ -1846,7 +2025,7 @@
           e.clientY < rect.top ||
           e.clientY > rect.bottom
         ) {
-          catalogDialog.close();
+          closeCatalogSheet();
         }
       });
     }
