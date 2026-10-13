@@ -821,13 +821,23 @@
     }
 
     .sticky-footer.has-scrolled .ticker {
-      background-color: var(--surface-container-lowest);
+      background: transparent;
       border: none;
-      border-radius: 16px;
-      padding: 6px 12px;
-      margin-bottom: 10px;
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 8px;
       box-shadow: none;
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sticky-footer.has-scrolled .ticker .ticker-text {
+      flex: 0 1 auto;
+      color: var(--text-main);
+      font-weight: 600;
+      line-height: 1.2;
     }
 
     .sticky-footer.has-scrolled .btn-primary {
@@ -871,7 +881,7 @@
       display: block;
       width: 4px;
       height: 4px;
-      background-color: var(--text-main);
+      background-color: #FFFFFF;
       border-radius: 50%;
     }
 
