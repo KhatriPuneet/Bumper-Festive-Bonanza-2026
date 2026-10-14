@@ -7,6 +7,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <!-- PostHog Web Analytics -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}var q="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" ");for(var h=0;h<q.length;h++)g(e,q[h]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_rJWaYSTdePhXbShmpk9xVdK85AB4J7PH3y3Vbx2MdGfQ', {
+      api_host: 'https://us.i.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: true
+    });
+  </script>
   <style>
     :root {
       /* Festive Prosperity Color Tokens */
@@ -2042,6 +2053,9 @@
     function openSheet(tab = 'terms') {
       switchTab(tab);
       if (dialog) dialog.showModal();
+      if (window.posthog) {
+        posthog.capture('offer_guidelines_opened', { tab: tab });
+      }
     }
     
     function closeSheet() {
@@ -2119,6 +2133,9 @@
       if (catalogDialog) {
         catalogDialog.showModal();
         startCatalogDualAnimation();
+      }
+      if (window.posthog) {
+        posthog.capture('rewards_catalog_opened');
       }
     }
     function closeCatalogSheet() {
@@ -2833,6 +2850,48 @@
           startCatalogDualAnimation();
         }
       }
+    });
+
+    // --- PostHog Custom Analytics Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Add Leads Now CTA Click Tracking
+      document.querySelectorAll('a[href*="banksathi.u9ilnk.me"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (window.posthog) {
+            posthog.capture('add_leads_clicked', {
+              campaign: 'Bumper Festive Bonanza 2026',
+              cta_text: btn.innerText.trim(),
+              destination_url: btn.href,
+              location: 'sticky_footer'
+            });
+          }
+        });
+      });
+
+      // 2. Reward Claim Form Clicks
+      document.querySelectorAll('a[href*="forms.gle"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.posthog) {
+            posthog.capture('reward_claim_form_clicked', {
+              campaign: 'Bumper Festive Bonanza 2026',
+              link_text: link.innerText.trim(),
+              destination_url: link.href
+            });
+          }
+        });
+      });
+
+      // 3. Need help? Call us
+      document.querySelectorAll('a[href^="tel:"]').forEach(telLink => {
+        telLink.addEventListener('click', () => {
+          if (window.posthog) {
+            posthog.capture('call_support_clicked', {
+              campaign: 'Bumper Festive Bonanza 2026',
+              phone_number: '+918058100306'
+            });
+          }
+        });
+      });
     });
 
   </script>
